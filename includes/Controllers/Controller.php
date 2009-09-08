@@ -21,22 +21,25 @@ abstract class Controller extends DBData{
         $this->E = $E;
 		DBData::__construct();
     }
+  /*! default action - just display index.smarty */  
+    public function index(){
     
+    }
 /*! Check if current action is valid for controller */
-
     function process( $ar =NULL ){
-        echo 0;
         if ( is_array( $ar ) ){
-            echo 1;
             $ar[0] = ( $this->showAdmin ) ? "admin_".$ar[0] : $ar[0];
             if( method_exists( $this, $ar[0] ) ){
-                echo 2;
                 $this->func_name = array_shift( $ar );
                 $this->arguments = $ar;
                 return true;
+            } else {
+                $this->func_name = "index";
+                $this->arguments = array();
+                return true;
             }
         }
-        return false;
+//        return false;
     }
 
 /*! Process controllers action 
@@ -51,7 +54,9 @@ abstract class Controller extends DBData{
         if ( $this->process( $args ) ){
             ob_start();
             $this->{$this->func_name}( $this->arguments );
-            T::assign( "content", ob_get_contents() );
+            $content = ob_get_contents();
+            echo $content;
+            T::assign( "content", $content );
             ob_clean();
             $this->display();
         }
@@ -59,10 +64,10 @@ abstract class Controller extends DBData{
 
     public function display(){
         if( $this->showTemplate ){
-            $template= TEMPLATES.strtolower(get_class( $this )).'/'.( ($this->showAdmin)?'admin/':'').str_replace('admin_','',$this->func_name.".smarty");
-            if( is_file( $template ) ) $cont = T::fetch( $template );
+            $template= TEMPLATES.strtolower(str_replace("Controller",'',get_class( $this ))).'/'.( ($this->showAdmin)?'admin/':'').str_replace('admin_','',$this->func_name.".smarty");
+            if( is_file( $template ) ) $c_template = T::fetch( $template );
             else $this->E->setError("no template found" );
-            T::assign( "content", $cont );
+            T::assign( "content", $c_template );
             T::display( TEMPLATES."page.smarty" );
         }
     }

@@ -9,7 +9,6 @@
     $dbuname = "root";
     $dbpass = "root";
     $dbname = "db019";
-    $controllerlist = array( "msgview", "parts" );
 	define( "PROJECT", "Forum");
 	define( "PROJECT_CAPTION", "Форум");
 
@@ -44,15 +43,28 @@
 	define( "CSS_URL", BASEURL."styles/" );
 		
 	require_once( CLASSES."Error.php" );
+	require_once( INCLUDES."functions.php" );
 	require_once( INCLUDES."mysql.php" );
 	require_once( "template.php" );
 	require_once( INTERFACES."main.php" );
 	require_once( CLASSES."DBData.php" );
+	require_once( INCLUDES."fagent.php" );
 
+    $contr = scandir( CONTROLLERS );
+    $controllerlist = array( );
 	require_once( CONTROLLERS."Controller.php" );
-	require_once( CONTROLLERS."msgview.php" );
-	require_once( CONTROLLERS."parts.php" );
-
+    if( $contr ){
+        foreach( $contr as $c ){
+            if ( ( strtolower( $c ) != "controller.php" ) && ( preg_match( "/^[^\.][\d\w]+\.php$/i", $c ) ) ){
+                require_once( CONTROLLERS."$c" );
+                $cs=preg_replace( "/\.php$/i","",$c );
+                global $$cs;
+                $contname =  camelize($cs)."Controller"; 
+                $$cs = new $contname();
+                $controllerlist[] = $cs;
+            }
+        }
+    }
 
 	require_once( CLASSES."User.php" );
 	require_once( CLASSES."Pages.php" );

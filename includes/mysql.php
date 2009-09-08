@@ -12,11 +12,11 @@ class sql_db {
 	
 	function sql_db( $sqlserver, $sqluser, $sqlpassword, $database, $persistency = true ) {
         global $E;
-		$this->db_connect_id = ( $persistency ) ? @mysql_pconnect( $sqlserver, $sqluser, $sqlpassword ) :
-			@mysql_connect( $sqlserver, $sqluser, $sqlpassword );
+		$this->db_connect_id = ( $persistency ) ? mysql_pconnect( $sqlserver, $sqluser, $sqlpassword ) :
+			mysql_connect( $sqlserver, $sqluser, $sqlpassword );
 		if ( $this->db_connect_id ) {
-			if ( $database != "" && !@mysql_select_db( $database ) ) {
-				@mysql_close( $this->db_connect_id );
+			if ( $database != "" && !mysql_select_db( $database ) ) {
+				mysql_close( $this->db_connect_id );
 				$this->db_connect_id = false;
 			}
 	$active_db = $this->db_connect_id;
@@ -30,8 +30,8 @@ class sql_db {
 
 	function sql_close() {
 		if ($this->db_connect_id) {
-			if ($this->query_result) @mysql_free_result($this->query_result);
-			$result = @mysql_close($this->db_connect_id);
+			if ($this->query_result) mysql_free_result($this->query_result);
+			$result = mysql_close($this->db_connect_id);
 			return $result;
 		} else {
 			return false;
@@ -44,9 +44,9 @@ class sql_db {
 		if ( $query != "" ) {
 			$tdba = explode( " ", microtime( ) );
 			$tdba = $tdba[1] + $tdba[0];
-			$this->query_result = @mysql_query( $query, $this->db_connect_id );
+			$this->query_result = mysql_query( $query, $this->db_connect_id );
 			if( !$this->query_result ){
-				$E->setError('<div style="text-align:center;"><b>SQL::error</b></br>'.@mysql_errno().' : '.@mysql_error().'<br/> in ('.$query.')</div>' );
+				$E->setError('<div style="text-align:center;"><b>SQL::error</b></br>'.mysql_errno().' : '.mysql_error().'<br/> in ('.$query.')</div>' );
 				return ERRCODE;
 			}
 			
@@ -60,8 +60,8 @@ class sql_db {
 			$this->num_queries += 1;
 			unset( $this->row[$this->query_result] );
 			unset( $this->rowset[$this->query_result] );
-			
-		if ( $this->query_result ) {
+//		var_dump( $this->query_result );
+		if ( !is_bool($this->query_result) && ( mysql_num_rows( $this->query_result ) > 0 ) ) {
 			$rows = array();
 			while($row_ = mysql_fetch_array( $this->query_result, MYSQL_ASSOC ) )
 				$rows[] = $row_;
@@ -80,7 +80,7 @@ class sql_db {
 	function sql_numrows( $query_id = 0 ) {
 		if ( !$query_id ) $query_id = $this->query_result;
 		if ( $query_id ) {
-			$result = @mysql_num_rows( $query_id );
+			$result = mysql_num_rows( $query_id );
 			return $result;
 		} else {
 			return false;
@@ -91,7 +91,7 @@ class sql_db {
 	function sql_fetchrow( $query_id = 0 ) {
 		if ( !$query_id ) $query_id = $this->query_result;
 		if ( $query_id ) {
-			$this->row[$query_id] = @mysql_fetch_array( $query_id );
+			$this->row[$query_id] = mysql_fetch_array( $query_id );
 			return $this->row[$query_id];
 		} else {
 			return false;
@@ -100,8 +100,8 @@ class sql_db {
 
 
 	function sql_error( $query_id = 0 ) {
-		$result["message"] = @mysql_error( $this->db_connect_id );
-		$result["code"] = @mysql_errno( $this->db_connect_id );
+		$result["message"] = mysql_error( $this->db_connect_id );
+		$result["code"] = mysql_errno( $this->db_connect_id );
 		return $result;
 	}
 }

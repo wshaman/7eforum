@@ -42,6 +42,7 @@ class DBData implements DBObject{
 		$this->ar2id( $id );
 		if( is_null( $this->id ) ) $E->setError( CANTSAVE, E_CRIT );
 		$sql = "DELETE FROM `{$this->table}` WHERE `{$this->keyfield}`={$this->id}";
+//        var_dump( $sql );
 		return $this->db->sql_query( $sql );
 	}
 

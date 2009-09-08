@@ -1,5 +1,5 @@
 <?php
-class Parts extends Controller{
+class PartsController extends Controller{
     var $table = "parts";
 
     function admin_view(){
@@ -14,6 +14,14 @@ class Parts extends Controller{
             T::assign( "part", $data );
         }
     }
+    
+    function admin_delete(){
+//        var_dump( $this->arguments[0] );die;
+        DBData::delete( $this->arguments[0] );
+//        $this->redirect( "view" );
+        redirect( "/admin/parts/view" );
+    }
+
     function admin_save( $data=NULL ){
 //        $this->data = ( is_null( $data ) || empty( $data ) ) ? $_POST : $data;
         $this->data =  $_POST;
@@ -22,5 +30,4 @@ class Parts extends Controller{
         $this->redirect( "view" );        
     }
 }
-$parts = new Parts();
 ?>

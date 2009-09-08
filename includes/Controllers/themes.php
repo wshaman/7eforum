@@ -1,5 +1,5 @@
 <?php
-class Themes extends Controller{
+class ThemesController extends Controller{
     var $table = "themes";
 }
 ?>

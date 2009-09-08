@@ -1,0 +1,7 @@
+<h2>Добро пожаловать на 7еФорум!</h2>
+{foreach from=$themes item=part}
+    <div class="parts">{$part.name}</div>
+    {foreach from=$part.themes item=theme}
+        <div class="themes" style="margin-left:10px;">{$theme.name}</div>
+    {/foreach}
+{/foreach}
