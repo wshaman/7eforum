@@ -1,0 +1,11 @@
+<h2>About</h2>
+<p>This project was created as test project for PHP developer vacancy<br/>
+Next tools were used<br/> 
+
+TransAJAX lib <a href="http://code.google.com/p/transajax/">TransAjax features</a><br/>
+Smarty and MySQL classes were taken from previous projects<br/>
+<a href="http://www.vim.org/">GNU/Vim</a> a powerful text editor<br/>
+<a href="http://www.phpmyadmin.net/">PHPMyAdmin</a> MySQL Administrator tool written in PHP<br/>
+Tested on FF3.5, Safari 3.1, Chrome testing, IE8<br/>
+Have fun!
+</p>

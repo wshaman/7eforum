@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="core.assemble_plugin_filepath.php" server="dev.faceyspacey.com//" local="127399469760000000" remote="128497824600000000" />
+<file name="core.assign_smarty_interface.php" server="dev.faceyspacey.com//" local="127398496520000000" remote="128497824600000000" />
+<file name="core.create_dir_structure.php" server="dev.faceyspacey.com//" local="127772481660000000" remote="128497824600000000" />
+<file name="core.display_debug_console.php" server="dev.faceyspacey.com//" local="127676605000000000" remote="128497824600000000" />
+<file name="core.get_include_path.php" server="dev.faceyspacey.com//" local="127398496520000000" remote="128497824600000000" />
+<file name="core.get_microtime.php" server="dev.faceyspacey.com//" local="127398496520000000" remote="128497824600000000" />
+<file name="core.get_php_resource.php" server="dev.faceyspacey.com//" local="127399469760000000" remote="128497824600000000" />
+<file name="core.is_secure.php" server="dev.faceyspacey.com//" local="127772481660000000" remote="128497824600000000" />
+<file name="core.is_trusted.php" server="dev.faceyspacey.com//" local="127772481660000000" remote="128497824600000000" />
+<file name="core.load_plugins.php" server="dev.faceyspacey.com//" local="127398496520000000" remote="128497824600000000" />
+<file name="core.load_resource_plugin.php" server="dev.faceyspacey.com//" local="127398496520000000" remote="128497824600000000" />
+<file name="core.process_cached_inserts.php" server="dev.faceyspacey.com//" local="127774943420000000" remote="128497824600000000" />
+<file name="core.process_compiled_include.php" server="dev.faceyspacey.com//" local="127653198820000000" remote="128497824600000000" />
+<file name="core.read_cache_file.php" server="dev.faceyspacey.com//" local="127653198820000000" remote="128497824600000000" />
+<file name="core.rmdir.php" server="dev.faceyspacey.com//" local="127640214580000000" remote="128497824600000000" />
+<file name="core.rm_auto.php" server="dev.faceyspacey.com//" local="127399469760000000" remote="128497824600000000" />
+<file name="core.run_insert_handler.php" server="dev.faceyspacey.com//" local="127399469760000000" remote="128497824600000000" />
+<file name="core.smarty_include_php.php" server="dev.faceyspacey.com//" local="127399469760000000" remote="128497824600000000" />
+<file name="core.write_cache_file.php" server="dev.faceyspacey.com//" local="127517231480000000" remote="128497824600000000" />
+<file name="core.write_compiled_include.php" server="dev.faceyspacey.com//" local="128176473620000000" remote="128497824600000000" />
+<file name="core.write_compiled_resource.php" server="dev.faceyspacey.com//" local="127399469760000000" remote="128497824600000000" />
+<file name="core.write_file.php" server="dev.faceyspacey.com//" local="128170849300000000" remote="128497824600000000" />
+</dwsync>

@@ -1,0 +1,6 @@
+<div class="menu_div">
+<a href="/" class="menu_item">Main</a>&nbsp;|&nbsp;
+<a href="{$BASEURL}catalogue" class="menu_item">View Tree</a>&nbsp;|&nbsp;
+<a href="{$BASEURL}documentation/html" class="menu_item">View Doxygen Docs</a>&nbsp;|&nbsp;
+<a href="{$BASEURL}about" class="menu_item">About</a>
+</div> 

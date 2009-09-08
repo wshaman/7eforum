@@ -1,0 +1,8 @@
+<h1>Разделы форума:</h1>
+<a href="{$FULLURL}admin/parts/edit"> Добавить раздел</a>
+<table width="320px;">
+    <tr><th>Название</th><th>Описание</th><th>-</th><th>e</th></tr>
+    {foreach from=$list item=i}
+        <tr><td>{$i.name}</td><td>{$i.description}</td><td>Удалить {$i.id}</td><td><a href="{$FULLURL}admin/parts/edit/{$i.id}">Редактировать</a><td></tr>
+    {/foreach}
+</table>

@@ -1,0 +1,124 @@
+
+config.php,1394
+	define( "PROJECT", "NSK_TEST");PROJECT5,32
+	define( "ERRBROKENPERM", -2 );ERRBROKENPERM11,175
+	define( "ERRCODE", -1 );ERRCODE12,207
+	define( "NOERR", 0 );NOERR13,233
+	define( "FULL_ACCESS", 1 );FULL_ACCESS14,256
+	define( "BASEURL", "/" );BASEURL15,285
+	define( "BASEDIR", dirname(dirname(__FILE__))."/" );		BASEDIR16,312
+	define( "INCLUDES", BASEDIR."includes/" );INCLUDES17,368
+	define( "UPLOADS", BASEDIR."uploads/" );UPLOADS18,412
+	define( "IMAGES", BASEDIR."img/" );IMAGES19,454
+	define( "SMARTY", INCLUDES."smarty/" );SMARTY20,491
+	define( "AJAX", INCLUDES."ajax/" );AJAX21,532
+	define( "JS", BASEDIR."js/" );JS22,569
+	define( "CSS", BASEDIR."styles/" );CSS23,601
+	define( "TEMPLATES", BASEDIR."templates/" );TEMPLATES24,638
+	define( "TEMPLATES_C", BASEDIR."templates_c/" );TEMPLATES_C25,684
+	define( "CLASSES", INCLUDES."classes/" );CLASSES26,734
+	define( "INTERFACES", INCLUDES."interfaces/" );INTERFACES27,777
+	define( "PAGES", TEMPLATES."pages/" );PAGES28,826
+	define( "FULLURL", ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 'https' : 'http')."://".$_SERVER['HTTP_HOST'].BASEURL );FULLURL30,867
+	define( "IMAGES_URL", FULLURL."img/" );IMAGES_URL31,1003
+	define( "UPLOADS_URL", BASEURL."uploads/" );UPLOADS_URL32,1044
+	define( "JS_URL", BASEURL."js/" );JS_URL33,1090
+	define( "CSS_URL", BASEURL."styles/" );CSS_URL34,1126
+
+mysql.php,1862
+$dbhost = "localhost";dbhost2,6
+$dbuname = "root";dbuname3,29
+$dbpass = "root";dbpass4,48
+$dbname = "db017";dbname5,66
+class sql_db {sql_db7,86
+	var $row = array();row10,142
+	var $rowset = array();rowset11,163
+	var $num_queries = 0;num_queries12,187
+	var $total_time_db = 0;total_time_db13,210
+	var $time_query = "";time_query14,235
+	function sql_db( $sqlserver, $sqluser, $sqlpassword, $database, $persistency = true ) {sql_db17,262
+	function sql_db( $sqlserver, $sqluser, $sqlpassword, $database, $persistency = true ) {persistency17,262
+	$active_db = $this->db_connect_id;active_db25,683
+	function sql_close() {sql_close34,873
+			$result = @mysql_close($this->db_connect_id);result37,996
+	function sql_query($query = "", $transaction = false) {sql_query44,1100
+	function sql_query($query = "", $transaction = false) {transaction44,1100
+			$tdba = explode( " ", microtime( ) );tdba48,1226
+			$tdba = $tdba[1] + $tdba[0];tdba49,1267
+			$tdbe = explode(" ", microtime());tdbe56,1573
+			$tdbe = $tdbe[1] + $tdbe[0];tdbe57,1611
+			$total_tdb = ($tdbe - $tdba);total_tdb58,1643
+			$rows = array();rows68,2182
+			return ( $transaction == END_TRANSACTION ) ? true : false;transaction79,2393
+	function sql_numrows( $query_id = 0 ) {sql_numrows83,2464
+	function sql_numrows( $query_id = 0 ) {query_id83,2464
+		if ( !$query_id ) $query_id = $this->query_result;query_id84,2505
+			$result = @mysql_num_rows( $query_id );result86,2579
+	function sql_fetchrow( $query_id = 0 ) {sql_fetchrow94,2678
+	function sql_fetchrow( $query_id = 0 ) {query_id94,2678
+		if ( !$query_id ) $query_id = $this->query_result;query_id95,2720
+	function sql_error( $query_id = 0 ) {sql_error105,2924
+	function sql_error( $query_id = 0 ) {query_id105,2924
+$db = new sql_db($dbhost, $dbuname, $dbpass, $dbname, false);db112,3106
+
+template.php,4117
+/* class Template, Smarty wrapperTemplate2,6
+class T extends Template{T14,576
+class Template{Template17,605
+	function &getInstance() {getInstance19,635
+           $c = __CLASS__;c22,709
+	function init($smarty_dir,$template_dir,$compile_dir, $debug = true) {init27,800
+	function init($smarty_dir,$template_dir,$compile_dir, $debug = true) {debug27,800
+		$_this = &Template::getInstance();_this29,919
+	function assign($var, $value = '') {assign38,1231
+	function assign($var, $value = '') {value38,1231
+		$_this = &Template::getInstance();_this39,1269
+	function display($file_name, $var = '', $value = '') {display42,1349
+	function display($file_name, $var = '', $value = '') {var42,1349
+		$_this = &Template::getInstance();_this43,1405
+	function fetch($file_name, $var = '', $value = '') {fetch47,1534
+	function fetch($file_name, $var = '', $value = '') {var47,1534
+		$_this = &Template::getInstance();_this48,1588
+	function get($name = null) {get52,1724
+	function getVars($name = null) {getVars55,1794
+		$_this = &Template::getInstance();_this56,1828
+	function registerSmartyFunctions() {registerSmartyFunctions60,1943
+		$_this = &Template::getInstance();_this61,1981
+		$f_arr = get_defined_functions();f_arr62,2018
+	function setTitle($title, $mode = "r", $separator = " - ") {setTitle81,2852
+	function setTitle($title, $mode = "r", $separator = " - ") {mode81,2852
+			$current_title = Template::getVars("title_for_layout");current_title83,2936
+			$title = ($mode == "i") ? $title.$separator.$current_content : $current_title.$separator.$title;title84,2995
+	function setKeywords($keywords, $mode = "r", $separator = ",") {setKeywords90,3233
+	function setKeywords($keywords, $mode = "r", $separator = ",") {mode90,3233
+		if (is_array($keywords)) $keywords = implode($separator, $keywords);keywords91,3299
+			$current_keywords = Template::getVars("keywords_for_layout");current_keywords93,3392
+			$keywords = ($mode == "i") ? $keywords.$separator.$current_keywords : $current_keywords.$separator.$keywords;keywords94,3457
+	function setDescription($description, $mode = "r", $separator = ". ") {setDescription100,3723
+	function setDescription($description, $mode = "r", $separator = ". ") {mode100,3723
+			$current_description = Template::getVars("description_for_layout");current_description103,3883
+			$description = ($mode == "i") ? $description.$separator.$current_description : $current_description.$separator.$description;description104,3954
+	function setError($error) {setError108,4151
+		$err_array = Template::getVars("err_array");err_array109,4180
+		if (!is_array($err_array)) $err_array = array();err_array110,4227
+	function setMessage($message) {setMessage114,4350
+		$msg_array = Template::getVars("msg_array");msg_array115,4383
+		if (!is_array($msg_array)) $msg_array = array();msg_array116,4430
+	function setContent($content_or_tpl, $mode = "r", $separator = "") {setContent122,4658
+	function setContent($content_or_tpl, $mode = "r", $separator = "") {mode122,4658
+		if (is_array($content_or_tpl)) $content_or_tpl = implode($separator, $content_or_tpl);content_or_tpl123,4728
+			$content_or_tpl = Template::fetch($content_or_tpl);content_or_tpl125,4863
+			$current_content = Template::getVars("content_for_layout");current_content128,4944
+			$content_or_tpl = ($mode == "i") ? $content_or_tpl.$current_content : $current_content.$content_or_tpl;content_or_tpl129,5007
+	function assignJS($js_src) {assignJS133,5175
+			$js_src = JS_URL.$js_src;js_src135,5267
+		$js_array = Template::getVars("js_array");js_array137,5300
+			$js_array = array($js_src);js_array139,5373
+	function assignCSS($css_src) {assignCSS144,5482
+			$css_src = CSS_URL.$css_src;css_src146,5578
+		$css_array = Template::getVars("css_array");css_array148,5614
+			$css_array = array($css_src);css_array150,5690
+	function assignHead($head) {assignHead155,5806
+		$head_array = Template::getVars("head_array");head_array156,5836
+			$head_array = array($head);head_array158,5915
+	function setDebug($debug_msg) {setDebug163,6029

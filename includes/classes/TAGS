@@ -1,0 +1,135 @@
+
+Actor.php,706
+abstract class Actor extends DBData{Actor3,7
+	function __construct(){__construct8,92
+/*	function save( $d = null){save13,178
+/*	function save( $d = null){d13,178
+	function login( $name, $pass, $plain=TRUE ){login17,237
+	function login( $name, $pass, $plain=TRUE ){plain17,237
+		$pass = ( $plain ) ? $this->hashpass( $pass ) : $pass;pass19,298
+		$r = $this->get( "`login`='{$name}' AND `pass`='{$pass}'" );r21,458
+	function countSessionID( $r ){countSessionID31,824
+	function logout(){logout35,907
+	function hashpass( $plain ){hashpass40,1000
+	public function checkRights(){checkRights44,1067
+		$r = $this->get( "`id`={$_SESSION[PROJECT]["id"]}" );r46,1185
+		$r = $r[0];r48,1284
+
+Catalogue.php,1039
+class Catalogue extends DBData implements serialFieldDB{Catalogue3,7
+	protected $table = "Categories";				//Main table with categoriestable4,64
+	protected $sfield = "fields";					sfield5,130
+	public function getFieldsNames( $id = NULL ){getFieldsNames13,291
+	public function getFieldsNames( $id = NULL ){id13,291
+	public function create( $parent ){create22,510
+	public function save( $d = NULL ){save27,677
+	public function save( $d = NULL ){d27,677
+	public function edit( $id = NULL ){edit36,918
+	public function edit( $id = NULL ){id36,918
+	public function getTop(){getTop50,1346
+	public function getBranch( $id ){getBranch54,1410
+		$data1 = $this->data;data158,1530
+		$data2 = $I->get( "`parent`={$id}" );data259,1554
+	public function buildTree( $id = 0 ){buildTree65,1735
+	public function buildTree( $id = 0 ){id65,1735
+		$r = $U->checkRights();r67,1787
+		if ( $r==FULL_ACCESS ) T::assign( "EDIT_ALLOW", 1 );r68,1813
+			$u = $this->get( "id={$this->id}" );u73,2008
+$C = new Catalogue();C83,2323
+
+DBData.php,2395
+define( "CANTSAVE", "Wrong data supported");CANTSAVE2,6
+class DBData implements DBObject{DBData4,52
+	protected $keyfield = "id";	keyfield6,105
+	protected $slist = "_list";slist8,153
+	private $fields = "*"; //TODO: implement setFields()fields10,198
+	function __construct(){__construct14,269
+	public function setTable( $table ){setTable19,333
+	public function setData( $data ){setData23,402
+	public function delete( $id = NULL ){delete27,467
+	public function delete( $id = NULL ){id27,467
+		$sql = "DELETE FROM `{$this->table}` WHERE `{$this->keyfield}`={$this->id}";sql31,605
+	public function get( $where = NULL, $table=NULL ){get35,728
+	public function get( $where = NULL, $table=NULL ){where35,728
+		$table = ( is_null( $table ) ) ? $this->table : $table; table36,780
+		$where = ( !is_null( $where ) ) ? " WHERE {$where} " : '';where37,839
+		$sql = "SELECT {$this->fields} FROM `{$table}` {$where} ";sql38,900
+	public function save( $d = null ){save42,1006
+	public function save( $d = null ){d42,1006
+	public function insert(){insert53,1373
+		$flds = array();flds55,1413
+		$vals = array();vals56,1432
+		foreach ( $this->data as $index => $item ){index57,1451
+			$flds = implode( ',', $flds );flds65,1696
+			$vals = implode( ',', $vals ); vals66,1730
+			$sql = "INSERT INTO `{$this->table}` (".$flds.") VALUES ( ".$vals." )";sql67,1765
+	public function update(){update75,1961
+		$flds = array();flds78,2015
+		$vals = array();vals79,2034
+		foreach ( $this->data as $index => $item ){index80,2053
+			$fldlist = implode( ',', $flds );fldlist87,2263
+			$sql = "UPDATE ".$this->table." SET ".$fldlist." WHERE {$this->keyfield}=".$this->data[$this->keyfield];sql88,2300
+	protected function storeSfield( $delimeter = ';' ){storeSfield97,2543
+	protected function storeSfield( $delimeter = ';' ){delimeter97,2543
+		$d = ( is_array( $this->data[$this->sfield] ) ) ? $this->data[$this->sfield] : explode( $delimeter, $this->data[$this->sfield] );d98,2596
+			foreach( $d as $k => $i )k100,2751
+	protected function unstoreSfield( $delimeter = ';' ){unstoreSfield105,2893
+	protected function unstoreSfield( $delimeter = ';' ){delimeter105,2893
+	protected function ar2id( $id, $setid = true ){ar2id113,3199
+	protected function ar2id( $id, $setid = true ){setid113,3199
+		if( is_array( $id ) ) $id = $id[$this->keyfield];id114,3248
+
+Error.php,499
+define( "E_WARN", 0 );E_WARN2,6
+define( "E_CRIT", 1 );E_CRIT3,29
+class Error {Error5,53
+	function __construct(){__construct7,85
+	public function setError( $text, $e_flag = E_WARN ){setError10,140
+	public function setError( $text, $e_flag = E_WARN ){e_flag10,140
+		if( $e_flag == E_CRIT ) $this->flushErrors();e_flag12,221
+	public function flushErrors(){flushErrors14,272
+	public function getErrors(){		getErrors17,330
+	private function msg(){msg20,393
+$E = new Error();E24,467
+
+Item.php,931
+class Item extends DBData implements serialFieldDB{Item3,7
+	protected $table = "Items";table4,59
+	protected $sfield = "fields";					sfield5,88
+	//protected $keyfield = "id";keyfield7,142
+	function get( $where = NULL, $table=NULL ){get10,191
+	function get( $where = NULL, $table=NULL ){where10,191
+	public function create( $parent ){create16,385
+	public function save( $d = null ){save21,553
+	public function save( $d = null ){d21,553
+	public function view( $id = NULL ){view27,690
+	public function view( $id = NULL ){id27,690
+	public function edit( $id = NULL ){edit34,870
+	public function edit( $id = NULL ){id34,870
+	protected function prepareMyData(){prepareMyData41,1074
+		$p = $C->get( "`id`={$this->data[0]['parent']}" );p46,1265
+			$p = unserialize( $p[0]["fields"] );p49,1386
+			$fieldlist=array();fieldlist50,1426
+			foreach( $p as $key => $item ){key51,1449
+$I = new Item();I60,1721
+
+Pages.php,647
+class Pages {Pages3,7
+	function __construct(){__construct9,84
+	private function makeNavMenu(){makeNavMenu14,147
+	private function makeTopMenu(){makeTopMenu18,214
+		$logedin = ( isset( $_SESSION[PROJECT]["id"] ) && ( $_SESSION[PROJECT]["id"] > 0 ) ) ? TRUE : FALSE;logedin19,247
+			$text = "Welcome, {$_SESSION[PROJECT]["name"]}! <a href=\"".BASEURL."logout\">logout</a>";text21,368
+			$text = "Welcome, Guest! <a href=\"".BASEURL."login\">login</a>";text23,473
+	private function showPage( ){showPage28,586
+	private function catalogue(){catalogue37,908
+	public function process( $url ){process41,948
+$P = new Pages();P72,1712
+
+User.php,238
+class User extends Actor{User3,43
+	//private $table = "Users";table4,69
+	function __construct(){__construct7,138
+	public function save( $d = null ){save10,190
+	public function save( $d = null ){d10,190
+$U = new User();U23,516

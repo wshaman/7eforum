@@ -1,0 +1,10 @@
+<div class="medium">
+	<h2>Enter your login and password in fields below</h2><br />
+	<form method="POST" action="/">
+		<table border="0px">
+			<tr><td>Login:</td><td><input type="text" name="login" /></td></tr>
+			<tr><td>Password:</td><td><input type="password" name="pass" /></td></tr>
+			<tr><td colspan="2"><input type="submit" /></td></tr>
+		</table>
+	</form>
+</div>

@@ -1,0 +1,17 @@
+<table width="200" border="0">
+    <tr>
+        <th>Parent category</th>
+        <td>{$parent}</td>
+    </tr>
+    <tr>
+        <th>Item name</th>
+        <td>{$item.name}</td>
+    </tr>
+
+    	
+		{foreach from=$fieldlist item=field}
+			<tr><th>{$field.name}</th><td>{$field.value}</td></tr>
+		{/foreach}		
+
+</table>
+<input type="button" value="Back" onclick="javascript:ajax('{$FULLURL}ajax.php?act=Catalogue&folder={$item.parent}','list_cat');"/>
