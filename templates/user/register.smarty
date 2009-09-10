@@ -1,0 +1,13 @@
+<form method="POST" action="{$FULLURL}user/register2">
+<fieldset>
+<label for="login">Логин*</label><input type="text" id="login" name="login"><br/>
+<label for="name"><strong>Имя**</strong></label><input type="text" id="name" name="name"><br/>
+<label for="pass"><strong>Пароль</strong></label><input type="password" id="pass" name="pass"><br/>
+<label for="pasr"><strong>Повторите пароль</strong></label><input type="password" id="pasr" name="pasr"><br/>
+<input type="submit" VALUE="Зарегистрироваться!" />
+</fieldset>
+<em>*Используется для входа на форум</em><br/>
+<em>**А так Вас будут видеть другие пользователи</em><br/>
+<strong>Обязательные к заполнению поля выделены жирным</strong>
+
+</form>

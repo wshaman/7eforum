@@ -1,0 +1,6 @@
+<h2>{$info.name}</h2>
+<em>{$info.description}</em>
+<h3>Posts:</h3>
+{foreach from=$posts item=post}
+<div class="post">{$post.users_name}, {$post.datetime}<br/>{$post.text}</div>
+{/foreach}

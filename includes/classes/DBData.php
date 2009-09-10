@@ -13,13 +13,18 @@ class DBData implements DBObject{
 	protected $id;
 	private $fields = "*"; //TODO: implement setFields()
 	protected $db;
+	protected $order = NULL;
     private $returnOne = TRUE;
-
+    protected $ljoin = array(); //Array of left joins. 
 	
 	function __construct(){
 		global $db;
 		$this->db = $db;
 	} 
+
+    function setLeftJoins( $table, $field_my, $field_there, $array_fields ){
+        $this->ljoin[] = array( "table"=>$table, "field_my"=>$field_my, "field_there"=>$field_there, "array_fields" => $array_fields );
+    }
 
 //! Set up ID. Used in cforeign calls.
 	public function setID( $id ){
@@ -52,8 +57,9 @@ class DBData implements DBObject{
     If omited $where and $this->id set, uses ID in WHERE CLAUSE
     If got 1 row as result, returns simple array.
 */
-	public function get( $where = NULL, $table=NULL ){
-		$table = ( is_null( $table ) ) ? $this->table : $table; 
+	public function get( $where = NULL/*, $table=NULL*/ ){
+		//$table = ( is_null( $table ) ) ? $this->table : $table; 
+		$table = $this->table;
 		if ( is_numeric( $where ) )  
 		  $where = " WHERE `{$this->keyfield}`={$where} ";
         else {
@@ -61,7 +67,22 @@ class DBData implements DBObject{
             if ( empty( $where ) && isset( $this->id ) && ( $this->id > 0 ) ) 
               $where = " WHERE `{$this->keyfield}`={$this->id} ";
         }
-		$sql = "SELECT {$this->fields} FROM `{$table}` {$where} ";
+        $order = ( is_null( $this->order ) ) ? '': " ORDER BY `".$this->order."` ";
+        $joins='';
+        $ljfields = array();
+        foreach( $this->ljoin as $item ){
+            $f = array();
+            foreach( $item["array_fields"] as $field ){
+                $f []= " {$item["table"]}.{$field} AS {$item["table"]}_{$field} ";
+            }
+            $f = implode( ',', $f );
+            $ljfields[] = $f;
+            $joins .=" LEFT JOIN {$item["table"]} ON {$table}.{$item["field_my"]}={$item["table"]}.{$item["field_there"]} ";
+        }
+        $ljfields = implode( ',', $ljfields );
+        $fields = ( $ljfields == '' ) ? "{$table}.{$this->fields}" : "{$table}.{$this->fields}, $ljfields";
+		$sql = "SELECT {$fields} FROM `{$table}` {$joins} {$where} ".$order;
+//        var_dump( $sql );
 		$d =   $this->db->sql_query( $sql );
         if( ( $this->returnOne ) && ( count( $d ) == 1  ) ) $d = $d[0];
 		if( is_null( $this->data ) ) $this->data = $d;

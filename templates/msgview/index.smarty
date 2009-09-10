@@ -2,6 +2,6 @@
 {foreach from=$themes item=part}
     <div class="parts">{$part.name}</div>
     {foreach from=$part.themes item=theme}
-        <div class="themes" style="margin-left:10px;">{$theme.name}</div>
+        <div class="themes" style="margin-left:10px;"><a href="{$FULLURL}msgview/theme/{$theme.id}">{$theme.name}</a></div>
     {/foreach}
 {/foreach}

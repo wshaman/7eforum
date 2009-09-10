@@ -5,15 +5,15 @@
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.7	//
 AJAX	./includes/config.php	/^	define( "AJAX", INCLUDES."ajax\/" );$/;"	d
-Actor	./includes/classes/Actor.php	/^abstract class Actor extends DBData{$/;"	c
+Actor	./includes/Controllers/user.php	/^    All methods are inherited from parent class Actor.$/;"	c
 BASEDIR	./includes/config.php	/^	define( "BASEDIR", dirname(dirname(__FILE__))."\/" );		$/;"	d
 BASEURL	./includes/config.php	/^	define( "BASEURL", "\/" );$/;"	d
-C	./includes/classes/Catalogue.php	/^$C = new Catalogue();$/;"	v
 CANTSAVE	./includes/classes/DBData.php	/^define( "CANTSAVE", "Wrong data supported");$/;"	d
 CLASSES	./includes/config.php	/^	define( "CLASSES", INCLUDES."classes\/" );$/;"	d
+CONTROLLERS	./includes/config.php	/^	define( "CONTROLLERS", INCLUDES."Controllers\/" );$/;"	d
 CSS	./includes/config.php	/^	define( "CSS", BASEDIR."styles\/" );$/;"	d
 CSS_URL	./includes/config.php	/^	define( "CSS_URL", BASEURL."styles\/" );$/;"	d
-Catalogue	./includes/classes/Catalogue.php	/^class Catalogue extends DBData implements serialFieldDB{$/;"	c
+Controller	./includes/Controllers/Controller.php	/^abstract class Controller extends DBData{$/;"	c
 DBData	./includes/classes/DBData.php	/^class DBData implements DBObject{$/;"	c
 DBObject	./includes/interfaces/main.php	/^interface DBObject {$/;"	i
 E	./includes/classes/Error.php	/^$E = new Error();$/;"	v
@@ -24,6 +24,7 @@ E_WARN	./includes/classes/Error.php	/^define( "E_WARN", 0 );$/;"	d
 Error	./includes/classes/Error.php	/^class Error {$/;"	c
 FULLURL	./includes/config.php	/^	define( "FULLURL", ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') ? 'https' : 'http').":\/\/".$_SERVER['HTTP_HOST'].BASEURL );$/;"	d
 FULL_ACCESS	./includes/config.php	/^	define( "FULL_ACCESS", 1 );$/;"	d
+ForumAgent	./includes/fagent.php	/^class ForumAgent extends DBData{$/;"	c
 I	./includes/classes/Item.php	/^$I = new Item();$/;"	v
 IMAGES	./includes/config.php	/^	define( "IMAGES", BASEDIR."img\/" );$/;"	d
 IMAGES_URL	./includes/config.php	/^	define( "IMAGES_URL", FULLURL."img\/" );$/;"	d
@@ -32,203 +33,237 @@ INTERFACES	./includes/config.php	/^	define( "INTERFACES", INCLUDES."interfaces\/
 Item	./includes/classes/Item.php	/^class Item extends DBData implements serialFieldDB{$/;"	c
 JS	./includes/config.php	/^	define( "JS", BASEDIR."js\/" );$/;"	d
 JS_URL	./includes/config.php	/^	define( "JS_URL", BASEURL."js\/" );$/;"	d
+MainController	./includes/Controllers/main.php	/^class MainController extends Controller{$/;"	c
+MsgviewController	./includes/Controllers/msgview.php	/^class MsgviewController extends Controller {$/;"	c
 NOERR	./includes/config.php	/^	define( "NOERR", 0 );$/;"	d
 P	./includes/classes/Pages.php	/^$P = new Pages();$/;"	v
 PAGES	./includes/config.php	/^	define( "PAGES", TEMPLATES."pages\/" );$/;"	d
-PROJECT	./includes/config.php	/^	define( "PROJECT", "NSK_TEST");$/;"	d
+PROJECT	./includes/config.php	/^	define( "PROJECT", "Forum");$/;"	d
+PROJECT_CAPTION	./includes/config.php	/^	define( "PROJECT_CAPTION", "Форум");$/;"	d
 Pages	./includes/classes/Pages.php	/^class Pages {$/;"	c
+PartsController	./includes/Controllers/parts.php	/^class PartsController extends Controller{$/;"	c
 SMARTY	./includes/config.php	/^	define( "SMARTY", INCLUDES."smarty\/" );$/;"	d
 Save	./includes/interfaces/main.php	/^	function Save( $d = null );$/;"	f
 T	./includes/template.php	/^class T extends Template{$/;"	c
 TEMPLATES	./includes/config.php	/^	define( "TEMPLATES", BASEDIR."templates\/" );$/;"	d
 TEMPLATES_C	./includes/config.php	/^	define( "TEMPLATES_C", BASEDIR."templates_c\/" );$/;"	d
-Template	./includes/template.php	/^\/* class Template, Smarty wrapper$/;"	c
+Template	./includes/template.php	/^\/*! class Template, Smarty wrapper$/;"	c
 Template	./includes/template.php	/^class Template{$/;"	c
-U	./includes/classes/User.php	/^$U = new User();$/;"	v
+ThemesController	./includes/Controllers/themes.php	/^class ThemesController extends Controller{$/;"	c
 UPLOADS	./includes/config.php	/^	define( "UPLOADS", BASEDIR."uploads\/" );$/;"	d
 UPLOADS_URL	./includes/config.php	/^	define( "UPLOADS_URL", BASEURL."uploads\/" );$/;"	d
-User	./includes/classes/User.php	/^class User extends Actor{$/;"	c
-__construct	./includes/classes/Actor.php	/^	function __construct(){$/;"	f
+UserController	./includes/Controllers/user.php	/^class UserController extends Controller{$/;"	c
+__construct	./includes/Controllers/Controller.php	/^    function __construct(){$/;"	f
+__construct	./includes/Controllers/msgview.php	/^    function __construct(){$/;"	f
 __construct	./includes/classes/DBData.php	/^	function __construct(){$/;"	f
 __construct	./includes/classes/Error.php	/^	function __construct(){$/;"	f
 __construct	./includes/classes/Pages.php	/^	function __construct(){$/;"	f
-__construct	./includes/classes/User.php	/^	function __construct(){$/;"	f
+__construct	./includes/fagent.php	/^    function __construct(){$/;"	f
 _this	./includes/template.php	/^		$_this = &Template::getInstance();$/;"	v
 action	./ajax.php	/^	$action = $_REQUEST["act"];$/;"	v
 active_db	./includes/mysql.php	/^	$active_db = $this->db_connect_id;$/;"	v
+admin	./includes/Controllers/Controller.php	/^    public function run( $args, $admin=false ){$/;"	v
+admin	./index.php	/^            $admin = true;$/;"	v
+admin	./index.php	/^    $admin = false;$/;"	v
+admin_delete	./includes/Controllers/parts.php	/^    function admin_delete(){$/;"	f
+admin_edit	./includes/Controllers/parts.php	/^    function admin_edit(){$/;"	f
+admin_index	./includes/Controllers/main.php	/^    function admin_index(){$/;"	f
+admin_save	./includes/Controllers/parts.php	/^    function admin_save( $data=NULL ){$/;"	f
+admin_view	./includes/Controllers/parts.php	/^    function admin_view(){$/;"	f
+ar	./includes/Controllers/Controller.php	/^    function process( $ar =NULL ){$/;"	v
 ar2id	./includes/classes/DBData.php	/^	protected function ar2id( $id, $setid = true ){$/;"	f
+args	./index.php	/^            $args = $mover;$/;"	v
+args	./index.php	/^        $args = array( "index" );$/;"	v
+args	./index.php	/^    $args = NULL;$/;"	v
+arguments	./includes/Controllers/Controller.php	/^    protected $arguments = NULL;$/;"	v
 assign	./includes/template.php	/^	function assign($var, $value = '') {$/;"	f
 assignCSS	./includes/template.php	/^	function assignCSS($css_src) {$/;"	f
-assignHead	./includes/template.php	/^	function assignHead($head) {$/;"	f
 assignJS	./includes/template.php	/^	function assignJS($js_src) {$/;"	f
-buildTree	./includes/classes/Catalogue.php	/^	public function buildTree( $id = 0 ){$/;"	f
 buildTree	./includes/interfaces/main.php	/^	function buildTree();*\/$/;"	f
 c	./includes/template.php	/^           $c = __CLASS__;$/;"	v
-catalogue	./includes/classes/Pages.php	/^	private function catalogue(){$/;"	f
-checkRights	./includes/classes/Actor.php	/^	public function checkRights(){$/;"	f
-content_or_tpl	./includes/template.php	/^			$content_or_tpl = ($mode == "i") ? $content_or_tpl.$current_content : $current_content.$content_or_tpl;$/;"	v
-content_or_tpl	./includes/template.php	/^			$content_or_tpl = Template::fetch($content_or_tpl);$/;"	v
-content_or_tpl	./includes/template.php	/^		if (is_array($content_or_tpl)) $content_or_tpl = implode($separator, $content_or_tpl);$/;"	v
-countSessionID	./includes/classes/Actor.php	/^	function countSessionID( $r ){$/;"	f
-create	./includes/classes/Catalogue.php	/^	public function create( $parent ){$/;"	f
+c_template	./includes/Controllers/Controller.php	/^            if( is_file( $template ) ) $c_template = T::display( $template );$/;"	v
+camelize	./includes/functions.php	/^function camelize($lower_case_and_underscored_word) {$/;"	f
+checkLogin	./includes/Controllers/user.php	/^	function checkLogin( $name, $pass, $plain=TRUE ){$/;"	f
+checkRights	./includes/Controllers/user.php	/^	public function checkRights(){$/;"	f
+class	./includes/Controllers/Controller.php	/^ \/\/   protected static $class = __CLASS__;$/;"	v
+content	./includes/Controllers/Controller.php	/^\/\/            $content = ob_get_contents();$/;"	v
+contname	./includes/config.php	/^                $contname =  camelize($cs)."Controller"; $/;"	v
+contr	./includes/config.php	/^    $contr = scandir( CONTROLLERS );$/;"	v
+controller	./index.php	/^            $controller = array_shift( $mover );$/;"	v
+controller	./index.php	/^        $controller = "msgview"; $/;"	v
+controller	./index.php	/^    $controller = NULL;$/;"	v
+controllerlist	./includes/config.php	/^    $controllerlist = array( );$/;"	v
+countSessionID	./includes/Controllers/user.php	/^	function countSessionID( $r ){$/;"	f
 create	./includes/classes/Item.php	/^	public function create( $parent ){$/;"	f
 create	./includes/interfaces/main.php	/^	function create( $parent );$/;"	f
+cs	./includes/config.php	/^                $cs=preg_replace( "\/\\.php$\/i","",$c );$/;"	v
 css_array	./includes/template.php	/^			$css_array = array($css_src);$/;"	v
 css_array	./includes/template.php	/^		$css_array = Template::getVars("css_array");$/;"	v
 css_src	./includes/template.php	/^			$css_src = CSS_URL.$css_src;$/;"	v
-current_content	./includes/template.php	/^			$current_content = Template::getVars("content_for_layout");$/;"	v
 current_description	./includes/template.php	/^			$current_description = Template::getVars("description_for_layout");$/;"	v
 current_keywords	./includes/template.php	/^			$current_keywords = Template::getVars("keywords_for_layout");$/;"	v
 current_title	./includes/template.php	/^			$current_title = Template::getVars("title_for_layout");$/;"	v
-d	./includes/classes/Actor.php	/^\/*	function save( $d = null){$/;"	v
-d	./includes/classes/Catalogue.php	/^	public function save( $d = NULL ){$/;"	v
 d	./includes/classes/DBData.php	/^		$d =   $this->db->sql_query( $sql );$/;"	v
 d	./includes/classes/DBData.php	/^		$d = ( is_array( $this->data[$this->sfield] ) ) ? $this->data[$this->sfield] : explode( $delimeter, $this->data[$this->sfield] );$/;"	v
 d	./includes/classes/DBData.php	/^	public function save( $d = null ){$/;"	v
 d	./includes/classes/DBData.php	/^ 		$d =  explode( '::', $this->data[$this->sfield] );$/;"	v
 d	./includes/classes/DBData.php	/^        if( ( $this->returnOne ) && ( count( $d ) == 1  ) ) $d = $d[0];$/;"	v
 d	./includes/classes/Item.php	/^	public function save( $d = null ){$/;"	v
-d	./includes/classes/User.php	/^	public function save( $d = null ){$/;"	v
 d	./includes/interfaces/main.php	/^	function Save( $d = null );$/;"	v
 data	./ajax.php	/^				$data = ( empty( $_POST) ) ? $_REQUEST : $_POST;$/;"	v
+data	./includes/Controllers/parts.php	/^            $data = $this->getOne( (int)$id );$/;"	v
+data	./includes/Controllers/parts.php	/^    function admin_save( $data=NULL ){$/;"	v
 data	./includes/classes/DBData.php	/^	protected $data = NULL;$/;"	v
-data1	./includes/classes/Catalogue.php	/^		$data1 = $this->data;$/;"	v
-data2	./includes/classes/Catalogue.php	/^		$data2 = $I->getAll( "`parent`={$id}" );$/;"	v
 db	./includes/mysql.php	/^$db = new sql_db($dbhost, $dbuname, $dbpass, $dbname, false);$/;"	v
-dbhost	./includes/mysql.php	/^$dbhost = "localhost";$/;"	v
-dbname	./includes/mysql.php	/^$dbname = "db017";$/;"	v
-dbpass	./includes/mysql.php	/^$dbpass = "root";$/;"	v
-dbuname	./includes/mysql.php	/^$dbuname = "root";$/;"	v
+dbhost	./includes/config.php	/^    $dbhost = "localhost";$/;"	v
+dbname	./includes/config.php	/^    $dbname = "db019";$/;"	v
+dbpass	./includes/config.php	/^    $dbpass = "root";$/;"	v
+dbuname	./includes/config.php	/^    $dbuname = "root";$/;"	v
 debug	./includes/template.php	/^	function init($smarty_dir,$template_dir,$compile_dir, $debug = true) {$/;"	v
 delete	./includes/classes/DBData.php	/^	public function delete( $id = NULL ){$/;"	f
 delimeter	./includes/classes/DBData.php	/^	protected function storeSfield( $delimeter = ';' ){$/;"	v
 delimeter	./includes/classes/DBData.php	/^	protected function unstoreSfield( $delimeter = ';' ){$/;"	v
 description	./includes/template.php	/^			$description = ($mode == "i") ? $description.$separator.$current_description : $current_description.$separator.$description;$/;"	v
+display	./includes/Controllers/Controller.php	/^    public function display(){$/;"	f
 display	./includes/template.php	/^	function display($file_name, $var = '', $value = '') {$/;"	f
-e	./index.php	/^	$e = json_encode( $t );$/;"	v
+displaying	./includes/classes/Pages.php	/^\/\/! Main function displaying any of displayable controller's method	$/;"	f
+e	./index.php	/^            $e= array_shift( $mover );$/;"	v
 e_flag	./includes/classes/Error.php	/^		if( $e_flag == E_CRIT ) $this->flushErrors();$/;"	v
 e_flag	./includes/classes/Error.php	/^	public function setError( $text, $e_flag = E_WARN ){$/;"	v
-edit	./includes/classes/Catalogue.php	/^	public function edit( $id = NULL ){$/;"	f
 edit	./includes/classes/Item.php	/^	public function edit( $id = NULL ){$/;"	f
 edit	./includes/interfaces/main.php	/^	function edit( $id = 0 );$/;"	f
-err_array	./includes/template.php	/^		$err_array = Template::getVars("err_array");$/;"	v
-err_array	./includes/template.php	/^		if (!is_array($err_array)) $err_array = array();$/;"	v
+errmsgs	./includes/Controllers/user.php	/^        $errmsgs = array();$/;"	v
+f	./includes/classes/DBData.php	/^            $f = array();$/;"	v
+f	./includes/classes/DBData.php	/^            $f = implode( ',', $f );$/;"	v
 f_arr	./includes/template.php	/^		$f_arr = get_defined_functions();$/;"	v
 fetch	./includes/template.php	/^	function fetch($file_name, $var = '', $value = '') {$/;"	f
 fid	./ajax.php	/^			$fid = ( isset( $_REQUEST["folder"] ) ) ? $_REQUEST["folder"] : 0;$/;"	v
-fid	./ajax.php	/^			$fid = ( isset( $_REQUEST["folder"] ) ) ? $_REQUEST["folder"] : ERRCODE;$/;"	v
 fieldlist	./includes/classes/Item.php	/^			$fieldlist=array();$/;"	v
 fields	./includes/classes/DBData.php	/^	private $fields = "*"; \/\/TODO: implement setFields()$/;"	v
+fields	./includes/classes/DBData.php	/^        $fields = ( $ljfields == '' ) ? "{$table}.{$this->fields}" : "{$table}.{$this->fields}, $ljfields";$/;"	v
 fldlist	./includes/classes/DBData.php	/^			$fldlist = implode( ',', $flds );$/;"	v
 flds	./includes/classes/DBData.php	/^			$flds = implode( ',', $flds );$/;"	v
 flds	./includes/classes/DBData.php	/^		$flds = array();$/;"	v
 flushErrors	./includes/classes/Error.php	/^	public function flushErrors(){$/;"	f
-get	./includes/classes/DBData.php	/^	public function get( $where = NULL, $table=NULL ){$/;"	f
-get	./includes/classes/Item.php	/^\/\/	function get( $where = NULL, $table=NULL ){$/;"	f
+func_name	./includes/Controllers/Controller.php	/^    protected $func_name = NULL;$/;"	v
+get	./includes/classes/DBData.php	/^	public function get( $where = NULL\/*, $table=NULL*\/ ){$/;"	f
 get	./includes/interfaces/main.php	/^	function get( $where = NULL, $table=NULL );$/;"	f
 get	./includes/template.php	/^	function get($name = null) {$/;"	f
 getAll	./includes/classes/DBData.php	/^	public function getAll( $where = NULL, $table=NULL ){$/;"	f
-getBranch	./includes/classes/Catalogue.php	/^	public function getBranch( $id ){$/;"	f
 getBranch	./includes/interfaces/main.php	/^	function getBranch( $id );$/;"	f
-getData	./includes/classes/Catalogue.php	/^    public function getData(){$/;"	f
 getErrors	./includes/classes/Error.php	/^	public function getErrors(){		$/;"	f
 getFields	./includes/interfaces/main.php	/^\/\/	function getFields();$/;"	f
-getFieldsNames	./includes/classes/Catalogue.php	/^	public function getFieldsNames( $id = NULL ){$/;"	f
 getInstance	./includes/template.php	/^	function &getInstance() {$/;"	f
+getMessagesByTheme	./includes/fagent.php	/^    public function getMessagesByTheme( $theme_id = 1 ){$/;"	f
+getMessagesByUser	./includes/fagent.php	/^    public function getMessagesByUser( $user_id = 1 ){$/;"	f
 getOne	./includes/classes/DBData.php	/^	public function getOne( $where = NULL, $table=NULL ){$/;"	f
-getTop	./includes/classes/Catalogue.php	/^	public function getTop(){$/;"	f
+getPartsThemes	./includes/fagent.php	/^    public function getPartsThemes(){$/;"	f
+getThemesForPart	./includes/fagent.php	/^    public function getThemesForPart( $id = 1 ){$/;"	f
 getTop	./includes/interfaces/main.php	/^\/*	function getTop();$/;"	f
 getVars	./includes/template.php	/^	function getVars($name = null) {$/;"	f
-hashpass	./includes/classes/Actor.php	/^	function hashpass( $plain ){$/;"	f
-head_array	./includes/template.php	/^			$head_array = array($head);$/;"	v
-head_array	./includes/template.php	/^		$head_array = Template::getVars("head_array");$/;"	v
-id	./includes/classes/Catalogue.php	/^	public function buildTree( $id = 0 ){$/;"	v
-id	./includes/classes/Catalogue.php	/^	public function edit( $id = NULL ){$/;"	v
-id	./includes/classes/Catalogue.php	/^	public function getFieldsNames( $id = NULL ){$/;"	v
+hadle	./includes/Controllers/Controller.php	/^ *  This _abstract_ class hadle the most basic functions such as $/;"	c
+hashpass	./includes/Controllers/user.php	/^	function hashpass( $plain ){$/;"	f
+id	./includes/Controllers/parts.php	/^        $id = ( is_numeric( $this->arguments[0] ) ) ? $this->arguments[0] : 0;$/;"	v
 id	./includes/classes/DBData.php	/^		if( is_array( $id ) ) $id = $id[$this->keyfield];$/;"	v
 id	./includes/classes/DBData.php	/^	public function delete( $id = NULL ){$/;"	v
 id	./includes/classes/Item.php	/^	public function edit( $id = NULL ){$/;"	v
 id	./includes/classes/Item.php	/^	public function view( $id = NULL ){$/;"	v
+id	./includes/fagent.php	/^    public function getThemesForPart( $id = 1 ){$/;"	v
 id	./includes/interfaces/main.php	/^	function edit( $id = 0 );$/;"	v
-iid	./ajax.php	/^			$iid = ( isset( $_REQUEST["item"] ) ) ? $_REQUEST["item"] : ERRCODE;$/;"	v
+in	./includes/Controllers/Controller.php	/^\/*! Base for Controller class in MVC *\/$/;"	c
+index	./includes/Controllers/Controller.php	/^    public function index(){$/;"	f
+index	./includes/Controllers/msgview.php	/^    public function index(){$/;"	f
 index	./includes/classes/DBData.php	/^		foreach ( $this->data as $index => $item ){$/;"	v
+info	./includes/Controllers/msgview.php	/^            $info = $this->fagent->getThemeInfo( $this->arguments[0] )$/;"	v
 init	./includes/template.php	/^	function init($smarty_dir,$template_dir,$compile_dir, $debug = true) {$/;"	f
 insert	./includes/classes/DBData.php	/^	public function insert(){$/;"	f
 insert	./includes/interfaces/main.php	/^	function insert();$/;"	f
+isLoged	./includes/Controllers/user.php	/^    public function isLoged(){$/;"	f
+joins	./includes/classes/DBData.php	/^        $joins='';$/;"	v
 js_array	./includes/template.php	/^			$js_array = array($js_src);$/;"	v
 js_array	./includes/template.php	/^		$js_array = Template::getVars("js_array");$/;"	v
 js_src	./includes/template.php	/^			$js_src = JS_URL.$js_src;$/;"	v
 k	./includes/classes/DBData.php	/^			foreach( $d as $k => $i )$/;"	v
 k	./includes/classes/DBData.php	/^		foreach( $d as $k => $i ){$/;"	v
 key	./includes/classes/Item.php	/^                foreach( $p["fields"] as $key => $item ){$/;"	v
+key	./includes/fagent.php	/^        foreach( $p as $key => $value)$/;"	v
 keyfield	./includes/classes/DBData.php	/^	protected $keyfield = "id";	$/;"	v
 keyfield	./includes/classes/Item.php	/^	\/\/protected $keyfield = "id";$/;"	v
 keywords	./includes/template.php	/^			$keywords = ($mode == "i") ? $keywords.$separator.$current_keywords : $current_keywords.$separator.$keywords;$/;"	v
 keywords	./includes/template.php	/^		if (is_array($keywords)) $keywords = implode($separator, $keywords);$/;"	v
+list	./includes/Controllers/parts.php	/^        $list = $this->getAll();$/;"	v
+ljfields	./includes/classes/DBData.php	/^        $ljfields = array();$/;"	v
+ljfields	./includes/classes/DBData.php	/^        $ljfields = implode( ',', $ljfields );$/;"	v
+ljoin	./includes/classes/DBData.php	/^    protected $ljoin = array(); \/\/Array of left joins. $/;"	v
 logedin	./includes/classes/Pages.php	/^		$logedin = ( isset( $_SESSION[PROJECT]["id"] ) && ( $_SESSION[PROJECT]["id"] > 0 ) ) ? TRUE : FALSE;$/;"	v
-login	./includes/classes/Actor.php	/^	function login( $name, $pass, $plain=TRUE ){$/;"	f
-logout	./includes/classes/Actor.php	/^	function logout(){$/;"	f
-makeNavMenu	./includes/classes/Pages.php	/^	private function makeNavMenu(){$/;"	f
+login	./includes/Controllers/user.php	/^    function login(){$/;"	f
+logout	./includes/Controllers/user.php	/^	function logout(){$/;"	f
 makeTopMenu	./includes/classes/Pages.php	/^	private function makeTopMenu(){$/;"	f
-mode	./includes/template.php	/^	function setContent($content_or_tpl, $mode = "r", $separator = "") {$/;"	v
 mode	./includes/template.php	/^	function setDescription($description, $mode = "r", $separator = ". ") {$/;"	v
 mode	./includes/template.php	/^	function setKeywords($keywords, $mode = "r", $separator = ",") {$/;"	v
 mode	./includes/template.php	/^	function setTitle($title, $mode = "r", $separator = " - ") {$/;"	v
+mover	./index.php	/^        $mover = explode( '\/', $_REQUEST["url"] );$/;"	v
 msg	./includes/classes/Error.php	/^	private function msg(){$/;"	f
-msg_array	./includes/template.php	/^		$msg_array = Template::getVars("msg_array");$/;"	v
-msg_array	./includes/template.php	/^		if (!is_array($msg_array)) $msg_array = array();$/;"	v
+name	./includes/Controllers/Controller.php	/^ * Eg: it can consit of function name and an argument$/;"	f
 num_queries	./includes/mysql.php	/^	var $num_queries = 0;$/;"	v
+order	./includes/classes/DBData.php	/^	protected $order = NULL;$/;"	v
+order	./includes/classes/DBData.php	/^        $order = ( is_null( $this->order ) ) ? '': " ORDER BY `".$this->order."` ";$/;"	v
+order	./includes/fagent.php	/^    var $order = "datetime";$/;"	v
+p	./includes/Controllers/msgview.php	/^        $p = $this->fagent->getPartsThemes();$/;"	v
 p	./includes/classes/Item.php	/^        $p =  ( is_array( $parent ) ) ? $parent["parent"] : $parent  ;$/;"	v
 p	./includes/classes/Item.php	/^        $p = $C->getData();$/;"	v
-pass	./includes/classes/Actor.php	/^		$pass = ( $plain ) ? $this->hashpass( $pass ) : $pass;$/;"	v
+p	./includes/fagent.php	/^        $p = $this->parta->getAll();$/;"	v
+partAgent	./includes/fagent.php	/^class partAgent extends DBData{$/;"	c
+pass	./includes/Controllers/user.php	/^		$pass = ( $plain ) ? $this->hashpass( $pass ) : $pass;$/;"	v
 persistency	./includes/mysql.php	/^	function sql_db( $sqlserver, $sqluser, $sqlpassword, $database, $persistency = true ) {$/;"	v
-plain	./includes/classes/Actor.php	/^	function login( $name, $pass, $plain=TRUE ){$/;"	v
+plain	./includes/Controllers/user.php	/^	function checkLogin( $name, $pass, $plain=TRUE ){$/;"	v
+posts	./includes/Controllers/msgview.php	/^            $posts = $this->fagent->getMessagesByTheme( $this->arguments[0] );$/;"	v
 prepareMyData	./includes/classes/Item.php	/^	protected function prepareMyData(){$/;"	f
+process	./includes/Controllers/Controller.php	/^    function process( $ar =NULL ){$/;"	f
 process	./includes/classes/Pages.php	/^	public function process( $url ){$/;"	f
 query_id	./includes/mysql.php	/^		if ( !$query_id ) $query_id = $this->query_result;$/;"	v
 query_id	./includes/mysql.php	/^	function sql_error( $query_id = 0 ) {$/;"	v
 query_id	./includes/mysql.php	/^	function sql_fetchrow( $query_id = 0 ) {$/;"	v
 query_id	./includes/mysql.php	/^	function sql_numrows( $query_id = 0 ) {$/;"	v
-r	./includes/classes/Actor.php	/^		$r = $r;$/;"	v
-r	./includes/classes/Actor.php	/^		$r = $this->get( "`id`={$_SESSION[PROJECT]["id"]}" );$/;"	v
-r	./includes/classes/Actor.php	/^		$r = $this->get( "`login`='{$name}' AND `pass`='{$pass}'" );$/;"	v
-r	./includes/classes/Catalogue.php	/^		$r = $U->checkRights();$/;"	v
-r	./includes/classes/Catalogue.php	/^		if ( $r==FULL_ACCESS ) T::assign( "EDIT_ALLOW", 1 );$/;"	v
+r	./includes/Controllers/user.php	/^		$r = $r;$/;"	v
+r	./includes/Controllers/user.php	/^		$r = $this->get( "`id`={$_SESSION[PROJECT]["id"]}" );$/;"	v
+r	./includes/Controllers/user.php	/^		$r = $this->get( "`login`='{$name}' AND `pass`='{$pass}'" );$/;"	v
+redirect	./includes/Controllers/Controller.php	/^    protected function redirect( $page ){$/;"	f
+redirect	./includes/functions.php	/^function redirect($location, $status = "", $type = "header") {$/;"	f
+register	./includes/Controllers/user.php	/^    function register(){$/;"	f
+register2	./includes/Controllers/user.php	/^    function register2(){$/;"	f
 registerSmartyFunctions	./includes/template.php	/^	function registerSmartyFunctions() {$/;"	f
+replace	./includes/functions.php	/^    $replace = str_replace(" ", "", ucwords(str_replace("_", " ", $lower_case_and_underscored_word)));$/;"	v
 res	./includes/classes/DBData.php	/^        $res = $this->get( $where, $table );$/;"	v
-result	./includes/mysql.php	/^			$result = @mysql_close($this->db_connect_id);$/;"	v
-result	./includes/mysql.php	/^			$result = @mysql_num_rows( $query_id );$/;"	v
+result	./includes/mysql.php	/^			$result = mysql_close($this->db_connect_id);$/;"	v
+result	./includes/mysql.php	/^			$result = mysql_num_rows( $query_id );$/;"	v
 returnOne	./includes/classes/DBData.php	/^    private $returnOne = TRUE;$/;"	v
 row	./includes/mysql.php	/^	var $row = array();$/;"	v
 rows	./includes/mysql.php	/^			$rows = array();$/;"	v
 rowset	./includes/mysql.php	/^	var $rowset = array();$/;"	v
-save	./includes/classes/Actor.php	/^\/*	function save( $d = null){$/;"	f
-save	./includes/classes/Catalogue.php	/^	public function save( $d = NULL ){$/;"	f
+run	./includes/Controllers/Controller.php	/^    public function run( $args, $admin=false ){$/;"	f
 save	./includes/classes/DBData.php	/^	public function save( $d = null ){$/;"	f
 save	./includes/classes/Item.php	/^	public function save( $d = null ){$/;"	f
-save	./includes/classes/User.php	/^	public function save( $d = null ){$/;"	f
 serialFieldDB	./includes/interfaces/main.php	/^interface serialFieldDB extends DBObject{$/;"	i
-setContent	./includes/template.php	/^	function setContent($content_or_tpl, $mode = "r", $separator = "") {$/;"	f
 setData	./includes/classes/DBData.php	/^	public function setData( $data ){$/;"	f
-setDebug	./includes/template.php	/^	function setDebug($debug_msg) {$/;"	f
 setDescription	./includes/template.php	/^	function setDescription($description, $mode = "r", $separator = ". ") {$/;"	f
 setError	./includes/classes/Error.php	/^	public function setError( $text, $e_flag = E_WARN ){$/;"	f
-setError	./includes/template.php	/^	function setError($error) {$/;"	f
 setFields	./includes/interfaces/main.php	/^\/\/	function setFields();$/;"	f
 setID	./includes/classes/DBData.php	/^	public function setID( $id ){$/;"	f
 setKeywords	./includes/template.php	/^	function setKeywords($keywords, $mode = "r", $separator = ",") {$/;"	f
-setMessage	./includes/template.php	/^	function setMessage($message) {$/;"	f
+setLeftJoins	./includes/classes/DBData.php	/^    function setLeftJoins( $table, $field_my, $field_there, $array_fields ){$/;"	f
 setTable	./includes/classes/DBData.php	/^	public function setTable( $table ){$/;"	f
 setTitle	./includes/template.php	/^	function setTitle($title, $mode = "r", $separator = " - ") {$/;"	f
 setid	./includes/classes/DBData.php	/^	protected function ar2id( $id, $setid = true ){$/;"	v
-sfield	./includes/classes/Catalogue.php	/^	protected $sfield = "fields";					$/;"	v
 sfield	./includes/classes/Item.php	/^	protected $sfield = "fields";					$/;"	v
+showAdmin	./includes/Controllers/Controller.php	/^    protected $showAdmin=false;$/;"	v
 showPage	./includes/classes/Pages.php	/^	private function showPage( ){$/;"	f
+showTemplate	./includes/Controllers/Controller.php	/^    protected $showTemplate=true;$/;"	v
 slist	./includes/classes/DBData.php	/^	protected $slist = "_list";$/;"	v
 sql	./includes/classes/DBData.php	/^			$sql = "INSERT INTO `{$this->table}` (".$flds.") VALUES ( ".$vals." )";$/;"	v
 sql	./includes/classes/DBData.php	/^			$sql = "UPDATE ".$this->table." SET ".$fldlist." WHERE {$this->keyfield}=".$this->data[$this->keyfield];$/;"	v
 sql	./includes/classes/DBData.php	/^		$sql = "DELETE FROM `{$this->table}` WHERE `{$this->keyfield}`={$this->id}";$/;"	v
-sql	./includes/classes/DBData.php	/^		$sql = "SELECT {$this->fields} FROM `{$table}` {$where} ";$/;"	v
+sql	./includes/classes/DBData.php	/^		$sql = "SELECT {$fields} FROM `{$table}` {$joins} {$where} ".$order;$/;"	v
 sql_close	./includes/mysql.php	/^	function sql_close() {$/;"	f
 sql_db	./includes/mysql.php	/^	function sql_db( $sqlserver, $sqluser, $sqlpassword, $database, $persistency = true ) {$/;"	f
 sql_db	./includes/mysql.php	/^class sql_db {$/;"	c
@@ -236,38 +271,59 @@ sql_error	./includes/mysql.php	/^	function sql_error( $query_id = 0 ) {$/;"	f
 sql_fetchrow	./includes/mysql.php	/^	function sql_fetchrow( $query_id = 0 ) {$/;"	f
 sql_numrows	./includes/mysql.php	/^	function sql_numrows( $query_id = 0 ) {$/;"	f
 sql_query	./includes/mysql.php	/^	function sql_query($query = "", $transaction = false) {$/;"	f
+status	./includes/functions.php	/^		$status = "";$/;"	v
+status	./includes/functions.php	/^	if ($status == "header" || $status == "script") {$/;"	v
+status	./includes/functions.php	/^function redirect($location, $status = "", $type = "header") {$/;"	v
 storeSfield	./includes/classes/DBData.php	/^	protected function storeSfield( $delimeter = ';' ){$/;"	f
-t	./includes/classes/DBData.php	/^\/\/        $t = $this->returnOne;$/;"	v
-table	./includes/classes/Catalogue.php	/^	protected $table = "Categories";				\/\/Main table with categories$/;"	v
-table	./includes/classes/DBData.php	/^		$table = ( is_null( $table ) ) ? $this->table : $table; $/;"	v
+table	./includes/Controllers/Controller.php	/^    protected $table = NULL;$/;"	v
+table	./includes/Controllers/msgview.php	/^    var $table = "posts";$/;"	v
+table	./includes/Controllers/parts.php	/^    var $table = "parts";$/;"	v
+table	./includes/Controllers/themes.php	/^    var $table = "themes";$/;"	v
+table	./includes/Controllers/user.php	/^    var $table="users";$/;"	v
+table	./includes/classes/DBData.php	/^		$table = $this->table;$/;"	v
 table	./includes/classes/Item.php	/^	protected $table = "Items";$/;"	v
-table	./includes/classes/User.php	/^	\/\/private $table = "Users";$/;"	v
+table	./includes/fagent.php	/^    var $table = "parts";$/;"	v
+table	./includes/fagent.php	/^    var $table = "posts";$/;"	v
+table	./includes/fagent.php	/^    var $table = "themes";$/;"	v
+table2	./includes/Controllers/msgview.php	/^    var $table2 = "themes";$/;"	v
+table3	./includes/Controllers/msgview.php	/^    var $table3 = "part";$/;"	v
 tdba	./includes/mysql.php	/^			$tdba = $tdba[1] + $tdba[0];$/;"	v
 tdba	./includes/mysql.php	/^			$tdba = explode( " ", microtime( ) );$/;"	v
 tdbe	./includes/mysql.php	/^			$tdbe = $tdbe[1] + $tdbe[0];$/;"	v
 tdbe	./includes/mysql.php	/^			$tdbe = explode(" ", microtime());$/;"	v
-text	./includes/classes/Pages.php	/^			$text = "Welcome, Guest! <a href=\\"".BASEURL."login\\">login<\/a>";$/;"	v
-text	./includes/classes/Pages.php	/^			$text = "Welcome, {$_SESSION[PROJECT]["name"]}! <a href=\\"".BASEURL."logout\\">logout<\/a>";$/;"	v
+template	./includes/Controllers/Controller.php	/^            $template= TEMPLATES.strtolower(str_replace("Controller",'',get_class( $this ))).'\/'.( ($this->showAdmin)?'admin\/':'').str_replace('admin_','',$this->func_name.".smarty");$/;"	v
+test	./includes/Controllers/msgview.php	/^    public function test( $a ){$/;"	f
+text	./includes/classes/Pages.php	/^        $text = T::fetch( TEMPLATES."userbar.smarty" );$/;"	v
+text	./includes/classes/Pages.php	/^#			$text = "Welcome, Guest! <a href=\\"".BASEURL."login\\">login<\/a>";$/;"	v
+text	./includes/classes/Pages.php	/^#			$text = "Welcome, {$_SESSION[PROJECT]["name"]}! <a href=\\"".BASEURL."logout\\">logout<\/a>";$/;"	v
+theme	./includes/Controllers/msgview.php	/^    public function theme(){$/;"	f
+themeAgent	./includes/fagent.php	/^class themeAgent extends DBData{$/;"	c
+theme_id	./includes/fagent.php	/^    public function getMessagesByTheme( $theme_id = 1 ){$/;"	v
 time_query	./includes/mysql.php	/^	var $time_query = "";$/;"	v
 title	./includes/template.php	/^			$title = ($mode == "i") ? $title.$separator.$current_content : $current_title.$separator.$title;$/;"	v
+to	./includes/classes/DBData.php	/^ Main class to control tables in DB.$/;"	c
+to	./includes/fagent.php	/^\/*! Helper class to control parts *\/$/;"	c
+to	./includes/fagent.php	/^\/*! Helper class to control themes *\/$/;"	c
 total_tdb	./includes/mysql.php	/^			$total_tdb = ($tdbe - $tdba);$/;"	v
 total_time_db	./includes/mysql.php	/^	var $total_time_db = 0;$/;"	v
 transaction	./includes/mysql.php	/^			return ( $transaction == END_TRANSACTION ) ? true : false;$/;"	v
 transaction	./includes/mysql.php	/^	function sql_query($query = "", $transaction = false) {$/;"	v
-u	./includes/classes/Catalogue.php	/^			$u = $this->getOne( );$/;"	v
+type	./includes/functions.php	/^			$type = "header";$/;"	v
+type	./includes/functions.php	/^		$type = $status;$/;"	v
 unstoreSfield	./includes/classes/DBData.php	/^	protected function unstoreSfield( $delimeter = ';' ){$/;"	f
 update	./includes/classes/DBData.php	/^	public function update(){$/;"	f
 update	./includes/interfaces/main.php	/^	function update();$/;"	f
+user_id	./includes/fagent.php	/^    public function getMessagesByUser( $user_id = 1 ){$/;"	v
 vals	./includes/classes/DBData.php	/^			$vals = implode( ',', $vals ); $/;"	v
 vals	./includes/classes/DBData.php	/^		$vals = array();$/;"	v
 value	./includes/template.php	/^	function assign($var, $value = '') {$/;"	v
 var	./includes/template.php	/^	function display($file_name, $var = '', $value = '') {$/;"	v
 var	./includes/template.php	/^	function fetch($file_name, $var = '', $value = '') {$/;"	v
 view	./includes/classes/Item.php	/^	public function view( $id = NULL ){$/;"	f
-where	./includes/classes/DBData.php	/^		  $where = " WHERE `{$this->keyfield}`={$this->id} ";$/;"	v
-where	./includes/classes/DBData.php	/^		$where = ( !is_null( $where ) ) ? " WHERE {$where} " : '';$/;"	v
-where	./includes/classes/DBData.php	/^	public function get( $where = NULL, $table=NULL ){$/;"	v
+where	./includes/classes/DBData.php	/^		  $where = " WHERE `{$this->keyfield}`={$where} ";$/;"	v
+where	./includes/classes/DBData.php	/^	public function get( $where = NULL\/*, $table=NULL*\/ ){$/;"	v
 where	./includes/classes/DBData.php	/^	public function getAll( $where = NULL, $table=NULL ){$/;"	v
 where	./includes/classes/DBData.php	/^	public function getOne( $where = NULL, $table=NULL ){$/;"	v
-where	./includes/classes/Item.php	/^\/\/	function get( $where = NULL, $table=NULL ){$/;"	v
+where	./includes/classes/DBData.php	/^              $where = " WHERE `{$this->keyfield}`={$this->id} ";$/;"	v
+where	./includes/classes/DBData.php	/^            $where = ( !is_null( $where ) ) ? " WHERE {$where} " : '';$/;"	v
 where	./includes/interfaces/main.php	/^	function get( $where = NULL, $table=NULL );$/;"	v

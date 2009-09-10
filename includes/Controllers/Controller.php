@@ -27,9 +27,9 @@ abstract class Controller extends DBData{
     }
 /*! Check if current action is valid for controller */
     function process( $ar =NULL ){
-        if ( is_array( $ar ) ){
+        if ( is_array( $ar ) && isset( $ar[0] )){
             $ar[0] = ( $this->showAdmin ) ? "admin_".$ar[0] : $ar[0];
-            if( method_exists( $this, $ar[0] ) ){
+            if( !empty( $ar[0] ) && ( method_exists( $this, $ar[0] ) ) ){
                 $this->func_name = array_shift( $ar );
                 $this->arguments = $ar;
                 return true;
@@ -38,6 +38,10 @@ abstract class Controller extends DBData{
                 $this->arguments = array();
                 return true;
             }
+        } else {
+            $this->func_name = "index";
+            $this->arguments = array();
+            return true;
         }
 //        return false;
     }
@@ -52,23 +56,29 @@ abstract class Controller extends DBData{
         $this->showAdmin = $admin;
         $this->showTemplate = true;
         if ( $this->process( $args ) ){
-            ob_start();
+//            ob_start();
             $this->{$this->func_name}( $this->arguments );
-            $content = ob_get_contents();
-            echo $content;
-            T::assign( "content", $content );
-            ob_clean();
+//            $content = ob_get_contents();
+//            echo $content;
+//            T::assign( "content", $content );
+//            ob_clean();
             $this->display();
         }
     }
 
     public function display(){
+        global $user;
         if( $this->showTemplate ){
             $template= TEMPLATES.strtolower(str_replace("Controller",'',get_class( $this ))).'/'.( ($this->showAdmin)?'admin/':'').str_replace('admin_','',$this->func_name.".smarty");
-            if( is_file( $template ) ) $c_template = T::fetch( $template );
+//            T::assign( "content", $c_template );
+            ob_start();
+            if( is_file( $template ) ) $c_template = T::display( $template );
             else $this->E->setError("no template found" );
-            T::assign( "content", $c_template );
-            T::display( TEMPLATES."page.smarty" );
+//            T::display( TEMPLATES."page.smarty" );
+            T::assign( "USER_NAME", $user->isLoged() );
+            T::assign( "content_on_page", ob_get_contents() );
+            ob_clean();
+            T::display( TEMPLATES."layout.smarty" );
         }
     }
 

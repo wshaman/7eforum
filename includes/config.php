@@ -66,12 +66,10 @@
         }
     }
 
-	require_once( CLASSES."User.php" );
-	require_once( CLASSES."Pages.php" );
-	require_once( CLASSES."Item.php" );
 	
 	T::init( SMARTY, TEMPLATES, TEMPLATES_C, false );
 	T::assign( "IMAGES", IMAGES_URL );
 	T::assign( "PROJECT", PROJECT );
 	T::assign( "FULLURL", FULLURL );
+	T::assign( "TEMPLATES", TEMPLATES );
 ?>

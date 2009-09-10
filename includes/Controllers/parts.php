@@ -26,8 +26,9 @@ class PartsController extends Controller{
 //        $this->data = ( is_null( $data ) || empty( $data ) ) ? $_POST : $data;
         $this->data =  $_POST;
         DBData::save();
-//`        $this->showTemplate=false;
-        $this->redirect( "view" );        
+//        $this->showTemplate=false;
+//        $this->redirect( "view" );        
+        redirect( "/admin/parts/view" );
     }
 }
 ?>

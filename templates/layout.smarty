@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>{$title}</title>
+		{foreach from=$css_array item=css }<link rel="stylesheet" href="{$css}" type="text/css">{/foreach}
+		{foreach from=$js_array item=js }<script language="javascript" type="text/javascript" src="{$js}"></script>{/foreach}
+
+    </head>
+    <script type="text/javascript">
+    </script>
+	<div class="login_top" id="loginmenu">{include file="userbar.smarty"}</div> 
+	<div class="total_div">
+	<div class="top_div">
+		{$title} 
+	</div>
+{*include file="top.smarty"*}
+    <body>
+        <div class="main_div">
+            <div class="main_text">
+                {$menu_nav}
+                {$content_on_page}
+            </div>
+        </div>
+    </body>
+{*include file="body.smarty"*}
+{*include file="bottom.smarty"*}
+{*$smarty.now|date_format:"%d:%m:%Y"*}
+<div class="bottom_div"><div class="main_text"><em>2009, test task dev</em></div></div>
+</div>
+{$errors}
+</html>

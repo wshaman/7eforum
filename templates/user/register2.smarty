@@ -1,0 +1,8 @@
+{if $err_msg}
+Невозможно зарегистрироваться:<br/>
+{$err_msg}
+<br/>
+<a href="{$FULLURL}user/register">Назад</a>
+{else}
+<a href="/">На главную</a>
+{/if}

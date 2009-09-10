@@ -25,9 +25,10 @@
         else die( "wrong link" );
     } else {
         $controller = "msgview"; 
-        $args = NULL;
+        $args = array( "index" );
     }
     $$controller->run( $args, $admin );
+    echo $E->getErrors()
 /*	if ( isset( $_POST["login"] ) && isset( $_POST["pass"] ) )
 	$U->login( $_POST["login"], $_POST["pass"], TRUE );
 	$P->process( $_REQUEST["url"] );*/

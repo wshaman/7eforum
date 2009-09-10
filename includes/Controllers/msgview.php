@@ -14,6 +14,16 @@ class MsgviewController extends Controller {
         $p = $this->fagent->getPartsThemes();
         T::assign( "themes", $p );
     }
+    
+    public function theme(){
+        if( is_numeric( $this->arguments[0] ) ){
+            $posts = $this->fagent->getMessagesByTheme( $this->arguments[0] );
+            $info = $this->fagent->getThemeInfo( $this->arguments[0] );
+            var_dump( $info );
+            T::assign( "posts", $posts );
+            T::assign( "info", $info );
+        }
+    }
 
     public function test( $a ){
         echo qqqqqqqqqqqq;

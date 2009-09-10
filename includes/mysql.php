@@ -54,7 +54,7 @@ class sql_db {
 			$tdbe = $tdbe[1] + $tdbe[0];
 			$total_tdb = ($tdbe - $tdba);
 			$this->total_time_db += $total_tdb;
-			$this->time_query .= "".substr($total_tdb, 0, 10) > 0.01."" ? "<font color=\"red\"><b>".substr($total_tdb, 0, 10)."</b></font> "._SEC.". - [".$query."]<br /><br />" : "<font color=\"green\"><b>".substr($total_tdb, 0, 10)."</b></font> "._SEC.". - [".$query."]<br /><br />";
+			//$this->time_query .= "".substr($total_tdb, 0, 10) > 0.01."" ? "<font color=\"red\"><b>".substr($total_tdb, 0, 10)."</b></font> "._SEC.". - [".$query."]<br /><br />" : "<font color=\"green\"><b>".substr($total_tdb, 0, 10)."</b></font> "._SEC.". - [".$query."]<br /><br />";
 		}
 		if ( $this->query_result ) {
 			$this->num_queries += 1;
