@@ -24,6 +24,12 @@ class ForumAgent extends DBData{
         return $this->themea->getOne( $theme_id );
     }
 
+/*! Return a post by id*/
+    public function getPost( $id = 1 ){
+        $this->setLeftJoins( "users", "user_id", "id", array( "name", "login" ) );
+        return $this->getOne( $id );
+    }
+
 /*! Return all posts by theme*/
     public function getMessagesByTheme( $theme_id = 1 ){
         $this->setLeftJoins( "users", "user_id", "id", array( "name", "login" ) );

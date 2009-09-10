@@ -31,6 +31,7 @@ class UserController extends Controller{
             return false;
         }
 	}
+
     function register(){
 
     }
@@ -72,6 +73,15 @@ class UserController extends Controller{
 		if( isset( $_SESSION[PROJECT]["name"] ) ) return $_SESSION[PROJECT]["name"];
         else return false;
         
+    }
+//! returns current user's ID.
+/*!
+ * TODO: Strongly recomend to rewrite this function with using special field "cred"
+ */
+    public function getMyID(){
+		if( !isset( $_SESSION[PROJECT] ) || $_SESSION[PROJECT]["id"] == 0 ) return ERRCODE;
+        return $_SESSION[PROJECT]["id"];
+
     }
 
 //! Check if curent Actor has permission to edit data. A.w. if Actor is an administrator

@@ -1,0 +1,11 @@
+<h3>Ответ на сообщение {$post.users_name} от {$post.datetime}</h3>
+
+{*include file="msgview/_form_edit.smarty"*}
+
+<form action="{$FULLURL}msgview/savePost" method="POST">
+Сообщение<br/>
+<input type="hidden" name="parent" value="{$post.id}" />
+<input type="hidden" name="theme_id" value="{$post.theme_id}" />
+<textarea name="text" id="text" cols="60" rows="8">[quot]{$post.text}[/quot]</textarea><br/>
+<input type="submit" value="Ответить"><br/>
+</form>

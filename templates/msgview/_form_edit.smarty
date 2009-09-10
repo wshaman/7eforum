@@ -1,0 +1,5 @@
+<form action="{$FULLURL}msgsview/save" method="POST">
+Сообщение<br/>
+<textarea name="text" id="text" cols="60" rows="8"><quot>{$post.text}</quot></textarea><br/>
+<input type="submit" value="Ответить"><br/>
+</form>

@@ -65,3 +65,12 @@ div.menu_div{
 .link_add{
     font-size: 10;
 }
+.post{
+    border:1px solid red;
+}
+.postslist{
+    border:1px solid blue;
+    padding-left: 10px;
+    height:370px;
+    overflow:auto;
+}

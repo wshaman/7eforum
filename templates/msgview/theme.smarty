@@ -1,6 +1,14 @@
 <h2>{$info.name}</h2>
 <em>{$info.description}</em>
 <h3>Posts:</h3>
+<div class="postslist">
 {foreach from=$posts item=post}
-<div class="post">{$post.users_name}, {$post.datetime}<br/>{$post.text}</div>
+<div class="post">{$post.users_name}, {$post.datetime}<br/>{$post.text}<br/>
+{if $AJAX_ENABLED}
+<!--a href="{$FULLURL}msgview/reply/{$post.id}">Ответить</a>&nbsp;<a href="{$FULLURL}msgview/reply/{$post.id}/quot">Ответить с цитатой</a-->
+{else}
+<a href="{$FULLURL}msgview/reply/{$post.id}">Ответить</a>&nbsp;<a href="{$FULLURL}msgview/reply/{$post.id}/quot">Ответить с цитатой</a>
+{/if}
+</div>
 {/foreach}
+</div>

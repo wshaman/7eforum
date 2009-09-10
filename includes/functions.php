@@ -32,4 +32,12 @@ function camelize($lower_case_and_underscored_word) {
     $replace = str_replace(" ", "", ucwords(str_replace("_", " ", $lower_case_and_underscored_word)));
     return $replace;
 }
+//! implode function can't work with UTF-8 Cyr. Let's make our own! With blackjack and hookers. In fact, forget the function.
+function mb_implode( $glue, $pieces ){
+    $cnt = count( $pieces );
+    if( $cnt < 2 ) return $pieces[0];
+    $r = '';
+    for( $i = 0; $i < $cnt-1; $i++ ) $r .= $pieces[$i].$glue;
+    return $r.$pieces[$cnt -1];
+}
 ?>

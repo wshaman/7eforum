@@ -1,0 +1,12 @@
+<form id="editPartForm" action="{$FULLURL}admin/parts/save/" method="POST">
+	{if $part.id}<input type="hidden" value="{$part.id}" name="id"/>{/if}
+	<table border="0">
+		<tr><td>Name:&nbsp;</td><td><input type="text" value="{$part.name}" name="name"/></td></tr>
+		<tr><td>Description:&nbsp;</td>
+			<td>
+				<textarea rows="3" name="description">{$part.description}</textarea>
+			</td>
+		</tr>
+		<tr><td colspan="2"><input type="submit" value="Save" ></td></tr>
+	</table>
+</form>

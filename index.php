@@ -11,8 +11,6 @@
     $admin = false;
     if( isset( $_REQUEST["url"] ) ){
         $mover = explode( '/', $_REQUEST["url"] );
-//        var_dump( $mover );
-//       var_dump( $controllerlist );
         if( $mover[0] == "admin" ){
             //TODO: Make admin login
             $admin = true;
@@ -29,7 +27,4 @@
     }
     $$controller->run( $args, $admin );
     echo $E->getErrors()
-/*	if ( isset( $_POST["login"] ) && isset( $_POST["pass"] ) )
-	$U->login( $_POST["login"], $_POST["pass"], TRUE );
-	$P->process( $_REQUEST["url"] );*/
 ?>

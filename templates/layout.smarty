@@ -30,4 +30,5 @@
 <div class="bottom_div"><div class="main_text"><em>2009, test task dev</em></div></div>
 </div>
 {$errors}
+{$empty_display}
 </html>

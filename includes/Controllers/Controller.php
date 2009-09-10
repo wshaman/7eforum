@@ -14,6 +14,7 @@ abstract class Controller extends DBData{
     protected $E;
     protected $showAdmin=false;
     protected $showTemplate=true;
+    private   $generatedText = '';
  //   protected static $class = __CLASS__;
 
     function __construct(){
@@ -27,13 +28,16 @@ abstract class Controller extends DBData{
     }
 /*! Check if current action is valid for controller */
     function process( $ar =NULL ){
+//        var_dump( $ar ); die;
         if ( is_array( $ar ) && isset( $ar[0] )){
             $ar[0] = ( $this->showAdmin ) ? "admin_".$ar[0] : $ar[0];
             if( !empty( $ar[0] ) && ( method_exists( $this, $ar[0] ) ) ){
+ //               echo "111"; die;
                 $this->func_name = array_shift( $ar );
                 $this->arguments = $ar;
                 return true;
             } else {
+//                echo "222"; die;
                 $this->func_name = "index";
                 $this->arguments = array();
                 return true;
@@ -56,12 +60,13 @@ abstract class Controller extends DBData{
         $this->showAdmin = $admin;
         $this->showTemplate = true;
         if ( $this->process( $args ) ){
-//            ob_start();
+            ob_start();
             $this->{$this->func_name}( $this->arguments );
-//            $content = ob_get_contents();
+            $this->generatedText = ob_get_contents();
 //            echo $content;
 //            T::assign( "content", $content );
-//            ob_clean();
+            ob_clean();
+//            var_dump( $this->generatedText );
             $this->display();
         }
     }
@@ -70,16 +75,19 @@ abstract class Controller extends DBData{
         global $user;
         if( $this->showTemplate ){
             $template= TEMPLATES.strtolower(str_replace("Controller",'',get_class( $this ))).'/'.( ($this->showAdmin)?'admin/':'').str_replace('admin_','',$this->func_name.".smarty");
-//            T::assign( "content", $c_template );
-            ob_start();
-            if( is_file( $template ) ) $c_template = T::display( $template );
-            else $this->E->setError("no template found" );
-//            T::display( TEMPLATES."page.smarty" );
-            T::assign( "USER_NAME", $user->isLoged() );
-            T::assign( "content_on_page", ob_get_contents() );
-            ob_clean();
-            T::display( TEMPLATES."layout.smarty" );
+        } else {
+            T::assign( "empty_display", $this->generatedText );
+            $template=TEMPLATES."empty.smarty";
+            $this->generatedText = '';
         }
+        ob_start();
+        if( is_file( $template ) ) $c_template = T::display( $template );
+        else $this->E->setError("no template found" );
+        if( !$this->showTemplate ) T::assign( "empty_display", '' );
+        T::assign( "USER_NAME", $user->isLoged() );
+        T::assign( "content_on_page", ob_get_contents() );
+        ob_clean();
+        T::display( TEMPLATES."layout.smarty" );
     }
 
     protected function redirect( $page ){

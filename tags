@@ -66,10 +66,14 @@ admin	./includes/Controllers/Controller.php	/^    public function run( $args, $a
 admin	./index.php	/^            $admin = true;$/;"	v
 admin	./index.php	/^    $admin = false;$/;"	v
 admin_delete	./includes/Controllers/parts.php	/^    function admin_delete(){$/;"	f
+admin_delete	./includes/Controllers/themes.php	/^    function admin_delete(){$/;"	f
 admin_edit	./includes/Controllers/parts.php	/^    function admin_edit(){$/;"	f
+admin_edit	./includes/Controllers/themes.php	/^    function admin_edit(){$/;"	f
 admin_index	./includes/Controllers/main.php	/^    function admin_index(){$/;"	f
 admin_save	./includes/Controllers/parts.php	/^    function admin_save( $data=NULL ){$/;"	f
+admin_save	./includes/Controllers/themes.php	/^    function admin_save( $data=NULL ){$/;"	f
 admin_view	./includes/Controllers/parts.php	/^    function admin_view(){$/;"	f
+admin_view	./includes/Controllers/themes.php	/^    function admin_view(){$/;"	f
 ar	./includes/Controllers/Controller.php	/^    function process( $ar =NULL ){$/;"	v
 ar2id	./includes/classes/DBData.php	/^	protected function ar2id( $id, $setid = true ){$/;"	f
 args	./index.php	/^            $args = $mover;$/;"	v
@@ -81,12 +85,13 @@ assignCSS	./includes/template.php	/^	function assignCSS($css_src) {$/;"	f
 assignJS	./includes/template.php	/^	function assignJS($js_src) {$/;"	f
 buildTree	./includes/interfaces/main.php	/^	function buildTree();*\/$/;"	f
 c	./includes/template.php	/^           $c = __CLASS__;$/;"	v
-c_template	./includes/Controllers/Controller.php	/^            if( is_file( $template ) ) $c_template = T::display( $template );$/;"	v
+c_template	./includes/Controllers/Controller.php	/^        if( is_file( $template ) ) $c_template = T::display( $template );$/;"	v
 camelize	./includes/functions.php	/^function camelize($lower_case_and_underscored_word) {$/;"	f
+can	./includes/functions.php	/^\/\/! implode function can't work with UTF-8 Cyr. Let's make our own! With blackjack and hookers. In fact, forget the function.$/;"	f
 checkLogin	./includes/Controllers/user.php	/^	function checkLogin( $name, $pass, $plain=TRUE ){$/;"	f
 checkRights	./includes/Controllers/user.php	/^	public function checkRights(){$/;"	f
 class	./includes/Controllers/Controller.php	/^ \/\/   protected static $class = __CLASS__;$/;"	v
-content	./includes/Controllers/Controller.php	/^\/\/            $content = ob_get_contents();$/;"	v
+cnt	./includes/functions.php	/^    $cnt = count( $pieces );$/;"	v
 contname	./includes/config.php	/^                $contname =  camelize($cs)."Controller"; $/;"	v
 contr	./includes/config.php	/^    $contr = scandir( CONTROLLERS );$/;"	v
 controller	./index.php	/^            $controller = array_shift( $mover );$/;"	v
@@ -113,6 +118,8 @@ d	./includes/interfaces/main.php	/^	function Save( $d = null );$/;"	v
 data	./ajax.php	/^				$data = ( empty( $_POST) ) ? $_REQUEST : $_POST;$/;"	v
 data	./includes/Controllers/parts.php	/^            $data = $this->getOne( (int)$id );$/;"	v
 data	./includes/Controllers/parts.php	/^    function admin_save( $data=NULL ){$/;"	v
+data	./includes/Controllers/themes.php	/^            $data = $this->getOne( (int)$id );$/;"	v
+data	./includes/Controllers/themes.php	/^    function admin_save( $data=NULL ){$/;"	v
 data	./includes/classes/DBData.php	/^	protected $data = NULL;$/;"	v
 db	./includes/mysql.php	/^$db = new sql_db($dbhost, $dbuname, $dbpass, $dbname, false);$/;"	v
 dbhost	./includes/config.php	/^    $dbhost = "localhost";$/;"	v
@@ -136,16 +143,18 @@ errmsgs	./includes/Controllers/user.php	/^        $errmsgs = array();$/;"	v
 f	./includes/classes/DBData.php	/^            $f = array();$/;"	v
 f	./includes/classes/DBData.php	/^            $f = implode( ',', $f );$/;"	v
 f_arr	./includes/template.php	/^		$f_arr = get_defined_functions();$/;"	v
+fagent	./includes/Controllers/themes.php	/^        $fagent = new ForumAgent();$/;"	v
 fetch	./includes/template.php	/^	function fetch($file_name, $var = '', $value = '') {$/;"	f
 fid	./ajax.php	/^			$fid = ( isset( $_REQUEST["folder"] ) ) ? $_REQUEST["folder"] : 0;$/;"	v
 fieldlist	./includes/classes/Item.php	/^			$fieldlist=array();$/;"	v
 fields	./includes/classes/DBData.php	/^	private $fields = "*"; \/\/TODO: implement setFields()$/;"	v
 fields	./includes/classes/DBData.php	/^        $fields = ( $ljfields == '' ) ? "{$table}.{$this->fields}" : "{$table}.{$this->fields}, $ljfields";$/;"	v
-fldlist	./includes/classes/DBData.php	/^			$fldlist = implode( ',', $flds );$/;"	v
+fldlist	./includes/classes/DBData.php	/^			$fldlist = mb_implode( ',', $flds );$/;"	v
 flds	./includes/classes/DBData.php	/^			$flds = implode( ',', $flds );$/;"	v
 flds	./includes/classes/DBData.php	/^		$flds = array();$/;"	v
 flushErrors	./includes/classes/Error.php	/^	public function flushErrors(){$/;"	f
 func_name	./includes/Controllers/Controller.php	/^    protected $func_name = NULL;$/;"	v
+generatedText	./includes/Controllers/Controller.php	/^    private   $generatedText = '';$/;"	v
 get	./includes/classes/DBData.php	/^	public function get( $where = NULL\/*, $table=NULL*\/ ){$/;"	f
 get	./includes/interfaces/main.php	/^	function get( $where = NULL, $table=NULL );$/;"	f
 get	./includes/template.php	/^	function get($name = null) {$/;"	f
@@ -156,28 +165,35 @@ getFields	./includes/interfaces/main.php	/^\/\/	function getFields();$/;"	f
 getInstance	./includes/template.php	/^	function &getInstance() {$/;"	f
 getMessagesByTheme	./includes/fagent.php	/^    public function getMessagesByTheme( $theme_id = 1 ){$/;"	f
 getMessagesByUser	./includes/fagent.php	/^    public function getMessagesByUser( $user_id = 1 ){$/;"	f
+getMyID	./includes/Controllers/user.php	/^    public function getMyID(){$/;"	f
 getOne	./includes/classes/DBData.php	/^	public function getOne( $where = NULL, $table=NULL ){$/;"	f
 getPartsThemes	./includes/fagent.php	/^    public function getPartsThemes(){$/;"	f
+getPost	./includes/fagent.php	/^    public function getPost( $id = 1 ){$/;"	f
+getThemeInfo	./includes/fagent.php	/^    public function getThemeInfo( $theme_id = 1 ){$/;"	f
 getThemesForPart	./includes/fagent.php	/^    public function getThemesForPart( $id = 1 ){$/;"	f
 getTop	./includes/interfaces/main.php	/^\/*	function getTop();$/;"	f
 getVars	./includes/template.php	/^	function getVars($name = null) {$/;"	f
 hadle	./includes/Controllers/Controller.php	/^ *  This _abstract_ class hadle the most basic functions such as $/;"	c
 hashpass	./includes/Controllers/user.php	/^	function hashpass( $plain ){$/;"	f
+i	./includes/functions.php	/^    for( $i = 0; $i < $cnt-1; $i++ ) $r .= $pieces[$i].$glue;$/;"	v
 id	./includes/Controllers/parts.php	/^        $id = ( is_numeric( $this->arguments[0] ) ) ? $this->arguments[0] : 0;$/;"	v
+id	./includes/Controllers/themes.php	/^        $id = ( is_numeric( $this->arguments[0] ) ) ? $this->arguments[0] : 0;$/;"	v
 id	./includes/classes/DBData.php	/^		if( is_array( $id ) ) $id = $id[$this->keyfield];$/;"	v
 id	./includes/classes/DBData.php	/^	public function delete( $id = NULL ){$/;"	v
 id	./includes/classes/Item.php	/^	public function edit( $id = NULL ){$/;"	v
 id	./includes/classes/Item.php	/^	public function view( $id = NULL ){$/;"	v
+id	./includes/fagent.php	/^    public function getPost( $id = 1 ){$/;"	v
 id	./includes/fagent.php	/^    public function getThemesForPart( $id = 1 ){$/;"	v
 id	./includes/interfaces/main.php	/^	function edit( $id = 0 );$/;"	v
 in	./includes/Controllers/Controller.php	/^\/*! Base for Controller class in MVC *\/$/;"	c
 index	./includes/Controllers/Controller.php	/^    public function index(){$/;"	f
 index	./includes/Controllers/msgview.php	/^    public function index(){$/;"	f
 index	./includes/classes/DBData.php	/^		foreach ( $this->data as $index => $item ){$/;"	v
-info	./includes/Controllers/msgview.php	/^            $info = $this->fagent->getThemeInfo( $this->arguments[0] )$/;"	v
+info	./includes/Controllers/msgview.php	/^            $info = $this->fagent->getThemeInfo( $this->arguments[0] );$/;"	v
 init	./includes/template.php	/^	function init($smarty_dir,$template_dir,$compile_dir, $debug = true) {$/;"	f
 insert	./includes/classes/DBData.php	/^	public function insert(){$/;"	f
 insert	./includes/interfaces/main.php	/^	function insert();$/;"	f
+isLoged	./includes/Controllers/msgview.php	/^    private function isLoged(){$/;"	f
 isLoged	./includes/Controllers/user.php	/^    public function isLoged(){$/;"	f
 joins	./includes/classes/DBData.php	/^        $joins='';$/;"	v
 js_array	./includes/template.php	/^			$js_array = array($js_src);$/;"	v
@@ -199,6 +215,7 @@ logedin	./includes/classes/Pages.php	/^		$logedin = ( isset( $_SESSION[PROJECT][
 login	./includes/Controllers/user.php	/^    function login(){$/;"	f
 logout	./includes/Controllers/user.php	/^	function logout(){$/;"	f
 makeTopMenu	./includes/classes/Pages.php	/^	private function makeTopMenu(){$/;"	f
+mb_implode	./includes/functions.php	/^function mb_implode( $glue, $pieces ){$/;"	f
 mode	./includes/template.php	/^	function setDescription($description, $mode = "r", $separator = ". ") {$/;"	v
 mode	./includes/template.php	/^	function setKeywords($keywords, $mode = "r", $separator = ",") {$/;"	v
 mode	./includes/template.php	/^	function setTitle($title, $mode = "r", $separator = " - ") {$/;"	v
@@ -206,10 +223,12 @@ mover	./index.php	/^        $mover = explode( '\/', $_REQUEST["url"] );$/;"	v
 msg	./includes/classes/Error.php	/^	private function msg(){$/;"	f
 name	./includes/Controllers/Controller.php	/^ * Eg: it can consit of function name and an argument$/;"	f
 num_queries	./includes/mysql.php	/^	var $num_queries = 0;$/;"	v
+old_post	./includes/Controllers/msgview.php	/^        $old_post = $this->fagent->getPost( $this->arguments[0] );$/;"	v
 order	./includes/classes/DBData.php	/^	protected $order = NULL;$/;"	v
 order	./includes/classes/DBData.php	/^        $order = ( is_null( $this->order ) ) ? '': " ORDER BY `".$this->order."` ";$/;"	v
 order	./includes/fagent.php	/^    var $order = "datetime";$/;"	v
 p	./includes/Controllers/msgview.php	/^        $p = $this->fagent->getPartsThemes();$/;"	v
+p	./includes/Controllers/themes.php	/^        $p = $fagent->getPartsThemes();$/;"	v
 p	./includes/classes/Item.php	/^        $p =  ( is_array( $parent ) ) ? $parent["parent"] : $parent  ;$/;"	v
 p	./includes/classes/Item.php	/^        $p = $C->getData();$/;"	v
 p	./includes/fagent.php	/^        $p = $this->parta->getAll();$/;"	v
@@ -228,12 +247,14 @@ query_id	./includes/mysql.php	/^	function sql_numrows( $query_id = 0 ) {$/;"	v
 r	./includes/Controllers/user.php	/^		$r = $r;$/;"	v
 r	./includes/Controllers/user.php	/^		$r = $this->get( "`id`={$_SESSION[PROJECT]["id"]}" );$/;"	v
 r	./includes/Controllers/user.php	/^		$r = $this->get( "`login`='{$name}' AND `pass`='{$pass}'" );$/;"	v
+r	./includes/functions.php	/^    $r = '';$/;"	v
 redirect	./includes/Controllers/Controller.php	/^    protected function redirect( $page ){$/;"	f
 redirect	./includes/functions.php	/^function redirect($location, $status = "", $type = "header") {$/;"	f
 register	./includes/Controllers/user.php	/^    function register(){$/;"	f
 register2	./includes/Controllers/user.php	/^    function register2(){$/;"	f
 registerSmartyFunctions	./includes/template.php	/^	function registerSmartyFunctions() {$/;"	f
 replace	./includes/functions.php	/^    $replace = str_replace(" ", "", ucwords(str_replace("_", " ", $lower_case_and_underscored_word)));$/;"	v
+reply	./includes/Controllers/msgview.php	/^    function reply(){$/;"	f
 res	./includes/classes/DBData.php	/^        $res = $this->get( $where, $table );$/;"	v
 result	./includes/mysql.php	/^			$result = mysql_close($this->db_connect_id);$/;"	v
 result	./includes/mysql.php	/^			$result = mysql_num_rows( $query_id );$/;"	v
@@ -244,6 +265,7 @@ rowset	./includes/mysql.php	/^	var $rowset = array();$/;"	v
 run	./includes/Controllers/Controller.php	/^    public function run( $args, $admin=false ){$/;"	f
 save	./includes/classes/DBData.php	/^	public function save( $d = null ){$/;"	f
 save	./includes/classes/Item.php	/^	public function save( $d = null ){$/;"	f
+savePost	./includes/Controllers/msgview.php	/^    public function savePost(){$/;"	f
 serialFieldDB	./includes/interfaces/main.php	/^interface serialFieldDB extends DBObject{$/;"	i
 setData	./includes/classes/DBData.php	/^	public function setData( $data ){$/;"	f
 setDescription	./includes/template.php	/^	function setDescription($description, $mode = "r", $separator = ". ") {$/;"	f
@@ -292,6 +314,7 @@ tdba	./includes/mysql.php	/^			$tdba = explode( " ", microtime( ) );$/;"	v
 tdbe	./includes/mysql.php	/^			$tdbe = $tdbe[1] + $tdbe[0];$/;"	v
 tdbe	./includes/mysql.php	/^			$tdbe = explode(" ", microtime());$/;"	v
 template	./includes/Controllers/Controller.php	/^            $template= TEMPLATES.strtolower(str_replace("Controller",'',get_class( $this ))).'\/'.( ($this->showAdmin)?'admin\/':'').str_replace('admin_','',$this->func_name.".smarty");$/;"	v
+template	./includes/Controllers/Controller.php	/^            $template=TEMPLATES."empty.smarty";$/;"	v
 test	./includes/Controllers/msgview.php	/^    public function test( $a ){$/;"	f
 text	./includes/classes/Pages.php	/^        $text = T::fetch( TEMPLATES."userbar.smarty" );$/;"	v
 text	./includes/classes/Pages.php	/^#			$text = "Welcome, Guest! <a href=\\"".BASEURL."login\\">login<\/a>";$/;"	v
@@ -299,6 +322,7 @@ text	./includes/classes/Pages.php	/^#			$text = "Welcome, {$_SESSION[PROJECT]["n
 theme	./includes/Controllers/msgview.php	/^    public function theme(){$/;"	f
 themeAgent	./includes/fagent.php	/^class themeAgent extends DBData{$/;"	c
 theme_id	./includes/fagent.php	/^    public function getMessagesByTheme( $theme_id = 1 ){$/;"	v
+theme_id	./includes/fagent.php	/^    public function getThemeInfo( $theme_id = 1 ){$/;"	v
 time_query	./includes/mysql.php	/^	var $time_query = "";$/;"	v
 title	./includes/template.php	/^			$title = ($mode == "i") ? $title.$separator.$current_content : $current_title.$separator.$title;$/;"	v
 to	./includes/classes/DBData.php	/^ Main class to control tables in DB.$/;"	c
@@ -320,10 +344,11 @@ value	./includes/template.php	/^	function assign($var, $value = '') {$/;"	v
 var	./includes/template.php	/^	function display($file_name, $var = '', $value = '') {$/;"	v
 var	./includes/template.php	/^	function fetch($file_name, $var = '', $value = '') {$/;"	v
 view	./includes/classes/Item.php	/^	public function view( $id = NULL ){$/;"	f
-where	./includes/classes/DBData.php	/^		  $where = " WHERE `{$this->keyfield}`={$where} ";$/;"	v
+where	./includes/classes/DBData.php	/^		  $where = " WHERE `{$table}`.`{$this->keyfield}`={$where} ";$/;"	v
 where	./includes/classes/DBData.php	/^	public function get( $where = NULL\/*, $table=NULL*\/ ){$/;"	v
 where	./includes/classes/DBData.php	/^	public function getAll( $where = NULL, $table=NULL ){$/;"	v
 where	./includes/classes/DBData.php	/^	public function getOne( $where = NULL, $table=NULL ){$/;"	v
-where	./includes/classes/DBData.php	/^              $where = " WHERE `{$this->keyfield}`={$this->id} ";$/;"	v
+where	./includes/classes/DBData.php	/^              $where = " WHERE `{$table}`.`{$this->keyfield}`={$this->id} ";$/;"	v
 where	./includes/classes/DBData.php	/^            $where = ( !is_null( $where ) ) ? " WHERE {$where} " : '';$/;"	v
 where	./includes/interfaces/main.php	/^	function get( $where = NULL, $table=NULL );$/;"	v
+with	./includes/Controllers/user.php	/^ * TODO: Strongly recomend to rewrite this function with using special field "cred"$/;"	f

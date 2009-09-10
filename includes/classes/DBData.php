@@ -61,11 +61,11 @@ class DBData implements DBObject{
 		//$table = ( is_null( $table ) ) ? $this->table : $table; 
 		$table = $this->table;
 		if ( is_numeric( $where ) )  
-		  $where = " WHERE `{$this->keyfield}`={$where} ";
+		  $where = " WHERE `{$table}`.`{$this->keyfield}`={$where} ";
         else {
             $where = ( !is_null( $where ) ) ? " WHERE {$where} " : '';
             if ( empty( $where ) && isset( $this->id ) && ( $this->id > 0 ) ) 
-              $where = " WHERE `{$this->keyfield}`={$this->id} ";
+              $where = " WHERE `{$table}`.`{$this->keyfield}`={$this->id} ";
         }
         $order = ( is_null( $this->order ) ) ? '': " ORDER BY `".$this->order."` ";
         $joins='';
@@ -82,7 +82,7 @@ class DBData implements DBObject{
         $ljfields = implode( ',', $ljfields );
         $fields = ( $ljfields == '' ) ? "{$table}.{$this->fields}" : "{$table}.{$this->fields}, $ljfields";
 		$sql = "SELECT {$fields} FROM `{$table}` {$joins} {$where} ".$order;
-//        var_dump( $sql );
+   //     var_dump( $sql );
 		$d =   $this->db->sql_query( $sql );
         if( ( $this->returnOne ) && ( count( $d ) == 1  ) ) $d = $d[0];
 		if( is_null( $this->data ) ) $this->data = $d;
@@ -123,16 +123,20 @@ class DBData implements DBObject{
 		global $E;
 		$flds = array();
 		$vals = array();
+        var_dump( $this->data );
 		foreach ( $this->data as $index => $item ){
 			if( (!empty( $index ) ) && ( !empty( $item ) ) ){
 				if( $index != $this->keyfield)
 					$flds[] = '`'.$index.'`';
-					$vals[] = "'".htmlentities($item)."'";
+					$vals[] = "'$item'";
 			}
 		}
+        var_dump( $vals );
+        echo "<br>sss<br>";
 		if( count( $flds ) > 0){
 			$flds = implode( ',', $flds );
 			$vals = implode( ',', $vals ); 
+            var_dump( $vals );
 			$sql = "INSERT INTO `{$this->table}` (".$flds.") VALUES ( ".$vals." )";
 			return $this->db->sql_query( $sql );
 		} else {
@@ -154,7 +158,7 @@ class DBData implements DBObject{
 			}
 		}
 		if( count( $flds ) > 0){
-			$fldlist = implode( ',', $flds );
+			$fldlist = mb_implode( ',', $flds );
 			$sql = "UPDATE ".$this->table." SET ".$fldlist." WHERE {$this->keyfield}=".$this->data[$this->keyfield];
 			return $db->sql_query( $sql );
 		} else{
