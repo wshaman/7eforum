@@ -14,8 +14,13 @@ class DBData implements DBObject{
 	private $fields = "*"; //TODO: implement setFields()
 	protected $db;
 	protected $order = NULL;
-    private $returnOne = TRUE;
+    private $returnOne = 0; //Last Query Length
+    private $lql = TRUE;
     protected $ljoin = array(); //Array of left joins. 
+    private $page = 0;
+    private $usePager = false;
+    private $ppp = 10;  // Posts per Page;
+    private $pages_total = 0; 
 	
 	function __construct(){
 		global $db;
@@ -24,6 +29,10 @@ class DBData implements DBObject{
 
     function setLeftJoins( $table, $field_my, $field_there, $array_fields ){
         $this->ljoin[] = array( "table"=>$table, "field_my"=>$field_my, "field_there"=>$field_there, "array_fields" => $array_fields );
+    }
+
+    public function enablePager( $yes = true ){
+        $this->usePager = $yes;
     }
 
 //! Set up ID. Used in cforeign calls.
@@ -35,6 +44,10 @@ class DBData implements DBObject{
 	public function setTable( $table ){
 		$this->table = $table;		
 	}
+
+    public function setPPP( $ppp ){
+        $this->ppp = $ppp;
+    }
 
 //! Set private $data in foreign calls
 	public function setData( $data ){
@@ -50,6 +63,12 @@ class DBData implements DBObject{
 //        var_dump( $sql );
 		return $this->db->sql_query( $sql );
 	}
+
+//! Sets a page number $page in query;
+    public function setPage( $page ){
+        $this->page = $page;
+    }
+
 
 //! Make a simple SELECT
 /*!
@@ -84,10 +103,21 @@ class DBData implements DBObject{
 		$sql = "SELECT {$fields} FROM `{$table}` {$joins} {$where} ".$order;
    //     var_dump( $sql );
 		$d =   $this->db->sql_query( $sql );
+        $this->lql = count( $d );
+        if( ( $this->usePager ) && ( $this->lql > $this->ppp ) ){
+            $this->totalPages = (int)ceil( $this->lql / $this->ppp );
+            $limit = " LIMIT ".($this->page -1)*$this->ppp.",{$this->ppp} ";
+            $sql .= $limit;
+            $d = $this->db->sql_query( $sql );
+        }
         if( ( $this->returnOne ) && ( count( $d ) == 1  ) ) $d = $d[0];
 		if( is_null( $this->data ) ) $this->data = $d;
 		return $d;
-	} 
+	}
+//! Returns total pages count for last query.
+    public function getTotalPages(){
+        return $this->totalPages;
+    }
 
 //! Meta. Force get to rerun 1 row
 	public function getOne( $where = NULL, $table=NULL ){

@@ -1,0 +1,7 @@
+{if $pager_e}
+    <table border="0"><tr>
+    {section name=pager start=1 loop=$pages+1 step=1}
+        <td>{if $smarty.section.pager.index!=$current_page}<a href="{$FULLURL}msgview/theme/{$theme}/{$smarty.section.pager.index}">{$smarty.section.pager.index}</a>{else}{$smarty.section.pager.index}{/if}</td>
+    {/section}
+    </tr></table>
+{/if}

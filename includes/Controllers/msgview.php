@@ -17,18 +17,28 @@ class MsgviewController extends Controller {
     
     function reply(){
         if( !$this->isLoged() ) return false;
-        var_dump( $this->arguments );    
-        $old_post = $this->fagent->getPost( $this->arguments[0] );
-        var_dump( $old_post );
-        T::assign( "post", $old_post );
-        if( isset( $this->arguments[1] ) && ( $this->arguments[1] == "quot" ) ) T::assign( "with_quote", true );
+        if( isset( $this->arguments[1] ) && ( $this->arguments[1] == "theme" ) ){
+            T::assign( "with_quote", false );
+            T::assign( "by_theme", true );
+            $info = $this->fagent->getThemeInfo( $this->arguments[0] );
+            T::assign( "post", array( "parent"=>0, "theme_id"=>$info["id"] ) );
+            T::assign( "info", $info );
+        } else {
+            $old_post = $this->fagent->getPost( $this->arguments[0] );
+            T::assign( "post", $old_post );
+            if( isset( $this->arguments[1] ) && ( $this->arguments[1] == "quot" ) ) T::assign( "with_quote", true );
+        }
     }
 
     public function theme(){
         if( is_numeric( $this->arguments[0] ) ){
-            $posts = $this->fagent->getMessagesByTheme( $this->arguments[0] );
+            if( isset( $this->arguments[1] ) && ( is_numeric( $this->arguments[1] ) ) )
+                $page = $this->arguments[1];
+            else $page = 1;
+            $posts = $this->fagent->getMessagesByTheme( $this->arguments[0], $page );
+            $pages = $this->fagent->getTotalPages();
             $info = $this->fagent->getThemeInfo( $this->arguments[0] );
-            var_dump( $info );
+//            var_dump( $pages );die;
             T::assign( "posts", $posts );
             T::assign( "info", $info );
         }
@@ -41,7 +51,7 @@ class MsgviewController extends Controller {
         $this->data = $_POST;
         $this->data["user_id"] = $user->getMyID();
         parent::save();
-        echo "Ваше сообщение сохранено";
+        echo "Ваше сообщение сохранено. <a href=\"".FULLURL."msgview/theme/{$this->data["theme_id"]}\">К теме</a>";
     }
 
     private function isLoged(){

@@ -30,10 +30,26 @@ class ForumAgent extends DBData{
         return $this->getOne( $id );
     }
 
+//! Builds a pager menu for themes
+    public function buildPager( $theme, $page, $pages=NULL ){
+        if( $pages <2 ) return false;
+        T::assign( "pages", $pages );
+        T::assign( "pager_e", true );        
+        T::assign( "theme", $theme );        
+        T::assign( "current_page", $page );        
+    }
+
 /*! Return all posts by theme*/
-    public function getMessagesByTheme( $theme_id = 1 ){
+    public function getMessagesByTheme( $theme_id = 1, $page = 1 ){
+        global $user;
         $this->setLeftJoins( "users", "user_id", "id", array( "name", "login" ) );
-        return $this->getAll( "`theme_id`=".$theme_id );
+        $this->enablePager();
+        $ppp = ( isset( $_SESSION["user_conf"]["ppp"] )  ) ? $_SESSION["user_conf"]["ppp"]: 10;
+        $this->setPPP( $ppp );
+        $this->setPage( $page );
+        $r =  $this->getAll( "`theme_id`=".$theme_id );
+        $this->buildPager( $theme_id, $page, $this->getTotalPages() );
+        return $r;
     }
 /*! Returns all forum parts with themes inline */
     public function getPartsThemes(){

@@ -16,7 +16,8 @@ class UserController extends Controller{
 	function checkLogin( $name, $pass, $plain=TRUE ){
 		global $E;		
 		$pass = ( $plain ) ? $this->hashpass( $pass ) : $pass;
-		$r = $this->get( "`login`='{$name}' AND `pass`='{$pass}'" );
+		$r = $this->getOne( "`login`='{$name}' AND `pass`='{$pass}'" );
+//        var_dump( $r, $this->keyfield );die;
         if( isset( $r[$this->keyfield] ) ) {
             $this->name = $r["name"];
             $_SESSION[PROJECT]["name"] = $this->name;
@@ -24,6 +25,7 @@ class UserController extends Controller{
             $_SESSION[PROJECT]["id"] = $r["id"];
             $_SESSION[PROJECT]["mt"] = sha1( microtime() );
             $_SESSION[PROJECT]["SID"] = $this->countSessionID( $r["cred"] );
+            $_SESSION[PROJECT]["user_conf"]["ppp"] = $r["conf_ppp"];
             T::assign( "MSG_LOGIN", "Login successful!" );
             return $r;
         } else {
@@ -84,7 +86,7 @@ class UserController extends Controller{
 
     }
 
-//! Check if curent Actor has permission to edit data. A.w. if Actor is an administrator
+//! Return rigts level for current User. Use isAdmin() to check if User is an administrator
 	public function checkRights(){
 		if( !isset( $_SESSION[PROJECT] ) || $_SESSION[PROJECT]["id"] == 0 ) return ERRCODE;
 		$r = $this->get( "`id`={$_SESSION[PROJECT]["id"]}" );
@@ -96,5 +98,9 @@ class UserController extends Controller{
 		else
 			return ERRBROKENPERM;
 	}
+//! Check if curent User is an administrator
+    public function isAdmin(){
+        return ( $this->checkRights() == FULL_ACCESS );
+    }
 }
 ?>
