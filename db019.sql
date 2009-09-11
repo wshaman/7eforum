@@ -58,7 +58,7 @@ CREATE TABLE `posts` (
   `modifed` timestamp NOT NULL default '0000-00-00 00:00:00',
   `modifed_by` int(10) unsigned NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -67,7 +67,7 @@ SET character_set_client = @saved_cs_client;
 
 LOCK TABLES `posts` WRITE;
 /*!40000 ALTER TABLE `posts` DISABLE KEYS */;
-INSERT INTO `posts` VALUES (1,0,3,1,'fgdfg','2009-09-07 07:41:22','','0000-00-00 00:00:00',0),(2,1,1,1,'[quot]fgdfg[/quot]&ETH;&deg;&ETH;&deg;&ETH;&deg;&ETH;&deg;&ETH;&deg;&ETH;&deg;&ETH;&deg;&ETH;&deg;&ETH;&deg;&ETH;&deg;&ETH;&deg;&ETH;&deg;&ETH;&deg;','2009-09-10 08:48:48','','0000-00-00 00:00:00',0),(3,2,1,1,'[quot][quot]fgdfg[/quot]&Atilde;','2009-09-10 08:56:35','','0000-00-00 00:00:00',0),(4,3,3,1,'[quot][quot][quot]fgdfg[/quot]&Atilde;','2009-09-10 09:11:55','','0000-00-00 00:00:00',0),(5,2,3,1,'&ETH;&deg;&ETH;&deg;&ETH;&deg;','2009-09-10 10:29:52','','0000-00-00 00:00:00',0),(6,2,3,1,'&ETH;&deg;&ETH;&deg;&ETH;&deg;&ETH;&sup2;','2009-09-10 10:30:30','','0000-00-00 00:00:00',0),(7,6,3,1,'ввв','2009-09-10 10:33:34','','0000-00-00 00:00:00',0),(8,0,3,2,'И что, оно работает?','2009-09-11 07:32:54','','0000-00-00 00:00:00',0),(9,8,1,2,'[quot]И что, оно работает?[/quot]\r\nПринципиально - работает. Но не совсем понятно как именно','2009-09-11 07:42:52','','0000-00-00 00:00:00',0);
+INSERT INTO `posts` VALUES (1,0,3,1,'fgdfg','2009-09-07 07:41:22','','0000-00-00 00:00:00',0),(2,1,1,1,'[quot]fgdfg[/quot]&ETH;&deg;&ETH;&deg;&ETH;&deg;&ETH;&deg;&ETH;&deg;&ETH;&deg;&ETH;&deg;&ETH;&deg;&ETH;&deg;&ETH;&deg;&ETH;&deg;&ETH;&deg;&ETH;&deg;','2009-09-10 08:48:48','','0000-00-00 00:00:00',0),(3,2,1,1,'[quot][quot]fgdfg[/quot]&Atilde;','2009-09-10 08:56:35','','0000-00-00 00:00:00',0),(4,3,3,1,'[quot][quot][quot]fgdfg[/quot]&Atilde;','2009-09-10 09:11:55','','0000-00-00 00:00:00',0),(5,2,3,1,'&ETH;&deg;&ETH;&deg;&ETH;&deg;','2009-09-10 10:29:52','','0000-00-00 00:00:00',0),(6,2,3,1,'&ETH;&deg;&ETH;&deg;&ETH;&deg;&ETH;&sup2;','2009-09-10 10:30:30','','0000-00-00 00:00:00',0),(7,6,3,1,'ввв','2009-09-10 10:33:34','','0000-00-00 00:00:00',0),(8,0,3,2,'И что, оно работает?','2009-09-11 07:32:54','','0000-00-00 00:00:00',0),(9,8,1,2,'[quot]И что, оно работает?[/quot]\r\nПринципиально - работает. Но не совсем понятно как именно','2009-09-11 07:42:52','','0000-00-00 00:00:00',0),(10,0,3,2,'А где личный кабинет?\r\n','2009-09-11 10:16:13','','0000-00-00 00:00:00',0),(11,10,1,2,'[quot]А где личный кабинет?\r\n[/quot]О! Точно! Сейчас забубеним!','2009-09-11 10:16:43','','0000-00-00 00:00:00',0);
 /*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -137,4 +137,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2009-09-11 10:09:57
+-- Dump completed on 2009-09-11 11:12:21

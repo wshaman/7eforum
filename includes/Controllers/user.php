@@ -39,7 +39,7 @@ class UserController extends Controller{
     }
 
     function register2(){
-        var_dump( $_POST );
+//        var_dump( $_POST );
         $errmsgs = array();
         if( empty( $_POST["login"] ) ) $errmsgs[] = "Не указан логин для входа";
         if( empty( $_POST["pass"] ) ) $errmsgs[] = "Не указан пароль для входа";
@@ -76,6 +76,18 @@ class UserController extends Controller{
         else return false;
         
     }
+
+    public function cabinet(){
+        if( !$this->isLoged() ){ 
+            //echo "Сначала нужно войти на форум( панель сверху ) или <a>зарегистрироваться!</a>";
+            T::display( TEMPLATES."error_login.smarty" );
+            $this->showTemplate = false;
+            return false;
+        }
+        $r = $this->getOne( $this->getMyID() );
+        T::assign( "user", $r );
+    }
+
 //! returns current user's ID.
 /*!
  * TODO: Strongly recomend to rewrite this function with using special field "cred"
@@ -89,7 +101,7 @@ class UserController extends Controller{
 //! Return rigts level for current User. Use isAdmin() to check if User is an administrator
 	public function checkRights(){
 		if( !isset( $_SESSION[PROJECT] ) || $_SESSION[PROJECT]["id"] == 0 ) return ERRCODE;
-		$r = $this->get( "`id`={$_SESSION[PROJECT]["id"]}" );
+		$r = $this->getOne( "`id`={$_SESSION[PROJECT]["id"]}" );
 		if( !is_array( $r ) ) return ERRCODE;
 		$r = $r;
 		/*Check if rights are correct*/

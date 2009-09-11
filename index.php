@@ -13,8 +13,16 @@
         $mover = explode( '/', $_REQUEST["url"] );
         if( $mover[0] == "admin" ){
             //TODO: Make admin login
-            $admin = true;
-            $e= array_shift( $mover );
+            if( !$user->isAdmin() ){
+                $E->setError( "Только администратор может смотреть эту страницу" );
+                $admin = false;
+                $controller = "msgview"; 
+                $args = array( "index" );
+                $mover[0]= '';
+            } else {
+                $admin = true;
+                $e= array_shift( $mover );
+            }
         }
         if( in_array( $mover[0], $controllerlist ) ) {
             $controller = array_shift( $mover );

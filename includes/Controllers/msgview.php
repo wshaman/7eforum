@@ -59,7 +59,8 @@ class MsgviewController extends Controller {
         if( $user->isLoged() ){
             return true;
         } else {
-            echo "Сначала нужно войти на форум( панель сверху ) или <a>зарегистрироваться!</a>";
+//            echo "Сначала нужно войти на форум( панель сверху ) или <a>зарегистрироваться!</a>";
+            T::display( TEMPLATES."error_login.smarty" );
             $this->showTemplate = false;
             return false;
         }
