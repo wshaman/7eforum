@@ -1,7 +1,5 @@
 {if $USER_NAME}
 Добро пожаловать, <a href="{$FULLURL}user/cabinet">{$USER_NAME}</a>! <a href="{$FULLURL}user/logout">Выйти</a>
-{if $IADMIN}&nbsp;<a href="{$FULLURL}admin/main">Админ</a>{/if}
-&nbsp;<a href="/">Главная</a>
 {else}
 <table>
     <tr><td>Войти</td>

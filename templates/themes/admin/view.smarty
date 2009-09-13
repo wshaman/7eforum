@@ -1,11 +1,11 @@
 <h1>Темы форума:</h1>
-{foreach from=$themes item=part}
+{foreach from=$list item=part}
     <div class="parts">{$part.name}</div>
 <a href="{$FULLURL}admin/themes/add/{$part.id}">Новая тема</a>
 <table width="320px;" border="1">
     <tr><th>Название</th><th>Описание</th><th>-</th><th>e</th></tr>
     {foreach from=$part.themes item=theme}
-        <tr><td>{$part.name}</td><td>{$part.description}</td><td><a href="{$FULLURL}admin/themes/delete/{$part.id}">Удалить</a></td><td><a href="{$FULLURL}admin/parts/edit/{$part.id}">Редактировать</a><td></tr>
+        <tr><td>{$theme.name}</td><td>{$thme.description}</td><td><a href="{$FULLURL}admin/themes/delete/{$part.id}">Удалить</a></td><td><a href="{$FULLURL}admin/themes/edit/{$part.id}">Редактировать</a><td></tr>
     {/foreach}
 </table>
 {/foreach}

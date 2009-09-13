@@ -2,7 +2,7 @@
 <em>{$info.description}</em>
 <h3>Posts:</h3>
 {include file="pager.smarty"}
-<a href="{$FULLURL}msgview/tree/{$info.id}">В виде дерева</a><br/-->
+<!--a href="{$FULLURL}msgview/reply/theme={$info.id}">Ответить</a><br/-->
 <a href="{$FULLURL}msgview/reply/{$info.id}/theme">Ответить</a><br/>
 <div class="postslist">
 {foreach from=$posts item=post}
@@ -10,9 +10,9 @@
 {if $AJAX_ENABLED}
 <!--a href="{$FULLURL}msgview/reply/{$post.id}">Ответить</a>&nbsp;<a href="{$FULLURL}msgview/reply/{$post.id}/quot">Ответить с цитатой</a-->
 {else}
-<a href="{$FULLURL}msgview/reply/{$post.id}">Ответить</a>&nbsp;<a href="{$FULLURL}msgview/reply/{$post.id}/quot">Ответить с цитатой</a>&nbsp;{if $IADMIN || $MYID==$post.user_id}<a href="{$FULLURL}msgview/delete/{$post.id}">Удалить</a>&nbsp;<a href="{$FULLURL}msgview/edit/{$post.id}">Править</a>{/if}
+<a href="{$FULLURL}msgview/reply/{$post.id}">Ответить</a>&nbsp;<a href="{$FULLURL}msgview/reply/{$post.id}/quot">Ответить с цитатой</a>{if $IADMIN || $MYID==$post.user_id}<a href="{$FULLURL}msgview/delete/{$post.id}">Удалить</a>{/if}
 {/if}
 </div>
 {/foreach}
 </div>
-
+--{$MYID}==

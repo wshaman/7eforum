@@ -1,0 +1,5 @@
+Просмотр темы <a href="{$FULLURL}/msgview/theme/{$theme_id}">списком</a><br/>
+{foreach from=$tree item=t}
+    {section name=pager start=1 loop=$t.level+1 step=1}*{/section}<a href="javascript:ajax('{$FULLURL}ajax.php/?get_message={$t.id}', 'msg_{$t.id}');">{$t.users_name},&nbsp;{$t.text|truncate:30:'..':true:true}</a><br/>
+<div id="msg_{$t.id}"></div>
+{/foreach}

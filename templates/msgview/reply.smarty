@@ -9,6 +9,6 @@
 Сообщение<br/>
 <input type="hidden" name="parent" value="{$post.id}" />
 <input type="hidden" name="theme_id" value="{$post.theme_id}" />
-<textarea name="text" id="text" cols="60" rows="8">{if $with_quote}[quot]{$post.text}[/quot]{else}{$post.text}{/if}</textarea><br/>
+<textarea name="text" id="text" cols="60" rows="8">{if $with_quote}[quot]{$post.text}[/quot]{/if}</textarea><br/>
 <input type="submit" value="Ответить"><br/>
 </form>

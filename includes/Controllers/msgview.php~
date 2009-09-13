@@ -28,22 +28,7 @@ class MsgviewController extends Controller {
             T::assign( "post", $old_post );
             if( isset( $this->arguments[1] ) && ( $this->arguments[1] == "quot" ) ) T::assign( "with_quote", true );
         }
-}
-
-   	public  function edit(){
-		if( is_numeric( $this->arguments[0] ) ){
-			$post = $this->getOne( $this->arguments[0] );
-            global $user;
-            if( ( $user->getMyID() != $post["user_id"] ) && !$user->isAdmin() ){
-                global $E;
-                $E->setError( "Editing not allowed" );
-                T::assign( "post", "Editing not allowed" );
-            } else {
-                T::assign( "post", $post );
-            }
-		}
-//		$this->redirect( "index" );
-	}
+    }
 
 	public  function delete(){
 		if( is_numeric( $this->arguments[0] ) ){

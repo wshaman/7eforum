@@ -1,2 +1,0 @@
-<h3>Catalogue presentation</h3>
-<div id="list_cat" class="catalogue">{$top_level}</div>

@@ -3,9 +3,11 @@
 !_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
-!_TAG_PROGRAM_VERSION	5.7	//
+!_TAG_PROGRAM_VERSION	5.8	//
 AJAX	./includes/config.php	/^	define( "AJAX", INCLUDES."ajax\/" );$/;"	d
 Actor	./includes/Controllers/user.php	/^    All methods are inherited from parent class Actor.$/;"	c
+Actor	./includes/classes/Actor.php	/^abstract class Actor extends DBData{$/;"	c
+Actor	./includes/classes/User.php	/^    All methods are inherited from parent class Actor.$/;"	c
 BASEDIR	./includes/config.php	/^	define( "BASEDIR", dirname(dirname(__FILE__))."\/" );		$/;"	d
 BASEURL	./includes/config.php	/^	define( "BASEURL", "\/" );$/;"	d
 CANTSAVE	./includes/classes/DBData.php	/^define( "CANTSAVE", "Wrong data supported");$/;"	d
@@ -16,6 +18,8 @@ CSS_URL	./includes/config.php	/^	define( "CSS_URL", BASEURL."styles\/" );$/;"	d
 Controller	./includes/Controllers/Controller.php	/^abstract class Controller extends DBData{$/;"	c
 DBData	./includes/classes/DBData.php	/^class DBData implements DBObject{$/;"	c
 DBObject	./includes/interfaces/main.php	/^interface DBObject {$/;"	i
+E	./includes/Controllers/Controller.php	/^        $this->E = $E;$/;"	v
+E	./includes/Controllers/Controller.php	/^    protected $E;$/;"	v
 E	./includes/classes/Error.php	/^$E = new Error();$/;"	v
 ERRBROKENPERM	./includes/config.php	/^	define( "ERRBROKENPERM", -2 );$/;"	d
 ERRCODE	./includes/config.php	/^	define( "ERRCODE", -1 );$/;"	d
@@ -50,21 +54,22 @@ TEMPLATES_C	./includes/config.php	/^	define( "TEMPLATES_C", BASEDIR."templates_c
 Template	./includes/template.php	/^\/*! class Template, Smarty wrapper$/;"	c
 Template	./includes/template.php	/^class Template{$/;"	c
 ThemesController	./includes/Controllers/themes.php	/^class ThemesController extends Controller{$/;"	c
+U	./includes/classes/User.php	/^$U = new User();$/;"	v
 UPLOADS	./includes/config.php	/^	define( "UPLOADS", BASEDIR."uploads\/" );$/;"	d
 UPLOADS_URL	./includes/config.php	/^	define( "UPLOADS_URL", BASEURL."uploads\/" );$/;"	d
+User	./includes/classes/User.php	/^class User extends Actor{$/;"	c
 UserController	./includes/Controllers/user.php	/^class UserController extends Controller{$/;"	c
 __construct	./includes/Controllers/Controller.php	/^    function __construct(){$/;"	f
 __construct	./includes/Controllers/msgview.php	/^    function __construct(){$/;"	f
+__construct	./includes/classes/Actor.php	/^	function __construct(){$/;"	f
 __construct	./includes/classes/DBData.php	/^	function __construct(){$/;"	f
 __construct	./includes/classes/Error.php	/^	function __construct(){$/;"	f
 __construct	./includes/classes/Pages.php	/^	function __construct(){$/;"	f
 __construct	./includes/fagent.php	/^    function __construct(){$/;"	f
 _this	./includes/template.php	/^		$_this = &Template::getInstance();$/;"	v
-action	./ajax.php	/^	$action = $_REQUEST["act"];$/;"	v
 active_db	./includes/mysql.php	/^	$active_db = $this->db_connect_id;$/;"	v
 admin	./includes/Controllers/Controller.php	/^    public function run( $args, $admin=false ){$/;"	v
-admin	./index.php	/^                $admin = false;$/;"	v
-admin	./index.php	/^                $admin = true;$/;"	v
+admin	./index.php	/^            $admin = true;$/;"	v
 admin	./index.php	/^    $admin = false;$/;"	v
 admin_add	./includes/Controllers/themes.php	/^    function admin_add(){$/;"	f
 admin_delete	./includes/Controllers/parts.php	/^    function admin_delete(){$/;"	f
@@ -76,17 +81,24 @@ admin_save	./includes/Controllers/parts.php	/^    function admin_save( $data=NUL
 admin_save	./includes/Controllers/themes.php	/^    function admin_save( $data=NULL ){$/;"	f
 admin_view	./includes/Controllers/parts.php	/^    function admin_view(){$/;"	f
 admin_view	./includes/Controllers/themes.php	/^    function admin_view(){$/;"	f
+all_children	./includes/fagent.php	/^		$all_children = $this->getAll( "parent=$id" );$/;"	v
+all_top	./includes/fagent.php	/^		$all_top = $this->getAll( "theme_id=$tid AND parent=0" );$/;"	v
 ar	./includes/Controllers/Controller.php	/^    function process( $ar =NULL ){$/;"	v
 ar2id	./includes/classes/DBData.php	/^	protected function ar2id( $id, $setid = true ){$/;"	f
-args	./index.php	/^                $args = array( "index" );$/;"	v
+args	./includes/classes/Pages.php	/^		$this->args = $this->url[1];$/;"	v
+args	./includes/classes/Pages.php	/^	private $args;$/;"	v
 args	./index.php	/^            $args = $mover;$/;"	v
 args	./index.php	/^        $args = array( "index" );$/;"	v
 args	./index.php	/^    $args = NULL;$/;"	v
+arguments	./includes/Controllers/Controller.php	/^                $this->arguments = $ar;$/;"	v
+arguments	./includes/Controllers/Controller.php	/^                $this->arguments = array();$/;"	v
+arguments	./includes/Controllers/Controller.php	/^            $this->arguments = array();$/;"	v
 arguments	./includes/Controllers/Controller.php	/^    protected $arguments = NULL;$/;"	v
 assign	./includes/template.php	/^	function assign($var, $value = '') {$/;"	f
 assignCSS	./includes/template.php	/^	function assignCSS($css_src) {$/;"	f
 assignJS	./includes/template.php	/^	function assignJS($js_src) {$/;"	f
 buildPager	./includes/fagent.php	/^    public function buildPager( $theme, $page, $pages=NULL ){$/;"	f
+buildTree	./includes/fagent.php	/^	public function buildTree( $tid ){$/;"	f
 buildTree	./includes/interfaces/main.php	/^	function buildTree();*\/$/;"	f
 c	./includes/template.php	/^           $c = __CLASS__;$/;"	v
 c_template	./includes/Controllers/Controller.php	/^        if( is_file( $template ) ) $c_template = T::display( $template );$/;"	v
@@ -95,16 +107,17 @@ camelize	./includes/functions.php	/^function camelize($lower_case_and_underscore
 can	./includes/functions.php	/^\/\/! implode function can't work with UTF-8 Cyr. Let's make our own! With blackjack and hookers. In fact, forget the function.$/;"	f
 checkLogin	./includes/Controllers/user.php	/^	function checkLogin( $name, $pass, $plain=TRUE ){$/;"	f
 checkRights	./includes/Controllers/user.php	/^	public function checkRights(){$/;"	f
+checkRights	./includes/classes/Actor.php	/^	public function checkRights(){$/;"	f
 class	./includes/Controllers/Controller.php	/^ \/\/   protected static $class = __CLASS__;$/;"	v
 cnt	./includes/functions.php	/^    $cnt = count( $pieces );$/;"	v
 contname	./includes/config.php	/^                $contname =  camelize($cs)."Controller"; $/;"	v
 contr	./includes/config.php	/^    $contr = scandir( CONTROLLERS );$/;"	v
-controller	./index.php	/^                $controller = "msgview"; $/;"	v
 controller	./index.php	/^            $controller = array_shift( $mover );$/;"	v
 controller	./index.php	/^        $controller = "msgview"; $/;"	v
 controller	./index.php	/^    $controller = NULL;$/;"	v
 controllerlist	./includes/config.php	/^    $controllerlist = array( );$/;"	v
 countSessionID	./includes/Controllers/user.php	/^	function countSessionID( $r ){$/;"	f
+countSessionID	./includes/classes/Actor.php	/^	function countSessionID( $r ){$/;"	f
 create	./includes/classes/Item.php	/^	public function create( $parent ){$/;"	f
 create	./includes/interfaces/main.php	/^	function create( $parent );$/;"	f
 cs	./includes/config.php	/^                $cs=preg_replace( "\/\\.php$\/i","",$c );$/;"	v
@@ -114,6 +127,7 @@ css_src	./includes/template.php	/^			$css_src = CSS_URL.$css_src;$/;"	v
 current_description	./includes/template.php	/^			$current_description = Template::getVars("description_for_layout");$/;"	v
 current_keywords	./includes/template.php	/^			$current_keywords = Template::getVars("keywords_for_layout");$/;"	v
 current_title	./includes/template.php	/^			$current_title = Template::getVars("title_for_layout");$/;"	v
+d	./includes/classes/Actor.php	/^\/*	function save( $d = null){$/;"	v
 d	./includes/classes/DBData.php	/^		$d =   $this->db->sql_query( $sql );$/;"	v
 d	./includes/classes/DBData.php	/^		$d = ( is_array( $this->data[$this->sfield] ) ) ? $this->data[$this->sfield] : explode( $delimeter, $this->data[$this->sfield] );$/;"	v
 d	./includes/classes/DBData.php	/^	public function save( $d = null ){$/;"	v
@@ -121,38 +135,67 @@ d	./includes/classes/DBData.php	/^ 		$d =  explode( '::', $this->data[$this->sfi
 d	./includes/classes/DBData.php	/^            $d = $this->db->sql_query( $sql );$/;"	v
 d	./includes/classes/DBData.php	/^        if( ( $this->returnOne ) && ( count( $d ) == 1  ) ) $d = $d[0];$/;"	v
 d	./includes/classes/Item.php	/^	public function save( $d = null ){$/;"	v
+d	./includes/classes/User.php	/^	public function save( $d = null ){$/;"	v
 d	./includes/interfaces/main.php	/^	function Save( $d = null );$/;"	v
-data	./ajax.php	/^				$data = ( empty( $_POST) ) ? $_REQUEST : $_POST;$/;"	v
+data	./includes/Controllers/msgview.php	/^        $this->data = $_POST;$/;"	v
 data	./includes/Controllers/parts.php	/^            $data = $this->getOne( (int)$id );$/;"	v
+data	./includes/Controllers/parts.php	/^        $this->data =  $_POST;$/;"	v
 data	./includes/Controllers/parts.php	/^    function admin_save( $data=NULL ){$/;"	v
+data	./includes/Controllers/parts.php	/^\/\/        $this->data = ( is_null( $data ) || empty( $data ) ) ? $_POST : $data;$/;"	v
 data	./includes/Controllers/themes.php	/^            $data = $this->getOne( (int)$id );$/;"	v
+data	./includes/Controllers/themes.php	/^        $this->data =  $_POST;$/;"	v
 data	./includes/Controllers/themes.php	/^    function admin_save( $data=NULL ){$/;"	v
+data	./includes/Controllers/themes.php	/^\/\/        $this->data = ( is_null( $data ) || empty( $data ) ) ? $_POST : $data;$/;"	v
+data	./includes/Controllers/user.php	/^            $this->data = $_POST;$/;"	v
+data	./includes/classes/DBData.php	/^		$this->data = $data;		$/;"	v
+data	./includes/classes/DBData.php	/^		if( !is_null( $d ) && is_array( $d ) ) $this->data = $d;$/;"	v
+data	./includes/classes/DBData.php	/^		if( is_null( $this->data ) ) $this->data = $d;$/;"	v
 data	./includes/classes/DBData.php	/^	protected $data = NULL;$/;"	v
+data	./includes/classes/Item.php	/^		$this->data = array( "parent" => $p );$/;"	v
+data	./includes/classes/Item.php	/^		if( ! is_null( $d ) )  $this->data = $d;$/;"	v
+data	./includes/classes/Item.php	/^	protected $data;$/;"	v
+db	./includes/classes/Actor.php	/^	protected $db;$/;"	v
+db	./includes/classes/DBData.php	/^		$this->db = $db;$/;"	v
+db	./includes/classes/DBData.php	/^	protected $db;$/;"	v
+db	./includes/classes/Pages.php	/^		$this->db = $db;$/;"	v
+db	./includes/classes/Pages.php	/^	private $db;$/;"	v
 db	./includes/mysql.php	/^$db = new sql_db($dbhost, $dbuname, $dbpass, $dbname, false);$/;"	v
+db_connect_id	./includes/mysql.php	/^				$this->db_connect_id = false;$/;"	v
+db_connect_id	./includes/mysql.php	/^		$this->db_connect_id = ( $persistency ) ? mysql_pconnect( $sqlserver, $sqluser, $sqlpassword ) :$/;"	v
+db_connect_id	./includes/mysql.php	/^	var $db_connect_id;$/;"	v
 dbhost	./includes/config.php	/^    $dbhost = "localhost";$/;"	v
 dbname	./includes/config.php	/^    $dbname = "db019";$/;"	v
 dbpass	./includes/config.php	/^    $dbpass = "root";$/;"	v
 dbuname	./includes/config.php	/^    $dbuname = "root";$/;"	v
 debug	./includes/template.php	/^	function init($smarty_dir,$template_dir,$compile_dir, $debug = true) {$/;"	v
+delete	./includes/Controllers/msgview.php	/^	public  function delete(){$/;"	f
 delete	./includes/classes/DBData.php	/^	public function delete( $id = NULL ){$/;"	f
+delete	./includes/fagent.php	/^	public function delete( $id ){$/;"	f
 delimeter	./includes/classes/DBData.php	/^	protected function storeSfield( $delimeter = ';' ){$/;"	v
 delimeter	./includes/classes/DBData.php	/^	protected function unstoreSfield( $delimeter = ';' ){$/;"	v
 description	./includes/template.php	/^			$description = ($mode == "i") ? $description.$separator.$current_description : $current_description.$separator.$description;$/;"	v
 display	./includes/Controllers/Controller.php	/^    public function display(){$/;"	f
 display	./includes/template.php	/^	function display($file_name, $var = '', $value = '') {$/;"	f
 displaying	./includes/classes/Pages.php	/^\/\/! Main function displaying any of displayable controller's method	$/;"	f
-e	./index.php	/^                $e= array_shift( $mover );$/;"	v
+e	./index.php	/^            $e= array_shift( $mover );$/;"	v
 e_flag	./includes/classes/Error.php	/^		if( $e_flag == E_CRIT ) $this->flushErrors();$/;"	v
 e_flag	./includes/classes/Error.php	/^	public function setError( $text, $e_flag = E_WARN ){$/;"	v
+edit	./includes/Controllers/msgview.php	/^   	public  function edit(){$/;"	f
 edit	./includes/classes/Item.php	/^	public function edit( $id = NULL ){$/;"	f
 edit	./includes/interfaces/main.php	/^	function edit( $id = 0 );$/;"	f
 enablePager	./includes/classes/DBData.php	/^    public function enablePager( $yes = true ){$/;"	f
 errmsgs	./includes/Controllers/user.php	/^        $errmsgs = array();$/;"	v
+errors	./includes/classes/Error.php	/^		$this->errors = array();$/;"	v
+errors	./includes/classes/Error.php	/^	private $errors;$/;"	v
 f	./includes/classes/DBData.php	/^            $f = array();$/;"	v
 f	./includes/classes/DBData.php	/^            $f = implode( ',', $f );$/;"	v
+f	./includes/config.php	/^    $f = $user->isAdmin();$/;"	v
+f	./includes/config.php	/^$f = $user->getMyID();$/;"	v
 f_arr	./includes/template.php	/^		$f_arr = get_defined_functions();$/;"	v
+fagent	./includes/Controllers/msgview.php	/^        $this->fagent = new ForumAgent();$/;"	v
+fagent	./includes/Controllers/msgview.php	/^    var $fagent;$/;"	v
+fagent	./includes/Controllers/themes.php	/^	$fagent = new ForumAgent();$/;"	v
 fetch	./includes/template.php	/^	function fetch($file_name, $var = '', $value = '') {$/;"	f
-fid	./ajax.php	/^			$fid = ( isset( $_REQUEST["folder"] ) ) ? $_REQUEST["folder"] : 0;$/;"	v
 fieldlist	./includes/classes/Item.php	/^			$fieldlist=array();$/;"	v
 fields	./includes/classes/DBData.php	/^	private $fields = "*"; \/\/TODO: implement setFields()$/;"	v
 fields	./includes/classes/DBData.php	/^        $fields = ( $ljfields == '' ) ? "{$table}.{$this->fields}" : "{$table}.{$this->fields}, $ljfields";$/;"	v
@@ -160,7 +203,13 @@ fldlist	./includes/classes/DBData.php	/^			$fldlist = mb_implode( ',', $flds );$
 flds	./includes/classes/DBData.php	/^			$flds = implode( ',', $flds );$/;"	v
 flds	./includes/classes/DBData.php	/^		$flds = array();$/;"	v
 flushErrors	./includes/classes/Error.php	/^	public function flushErrors(){$/;"	f
+for	./includes/classes/Actor.php	/^    Plays as base class for all Actorsi\/Users and Admin\/.$/;"	c
+func_name	./includes/Controllers/Controller.php	/^                $this->func_name = "index";$/;"	v
+func_name	./includes/Controllers/Controller.php	/^                $this->func_name = array_shift( $ar );$/;"	v
+func_name	./includes/Controllers/Controller.php	/^            $this->func_name = "index";$/;"	v
 func_name	./includes/Controllers/Controller.php	/^    protected $func_name = NULL;$/;"	v
+generatedText	./includes/Controllers/Controller.php	/^            $this->generatedText = '';$/;"	v
+generatedText	./includes/Controllers/Controller.php	/^            $this->generatedText = ob_get_contents();$/;"	v
 generatedText	./includes/Controllers/Controller.php	/^    private   $generatedText = '';$/;"	v
 get	./includes/classes/DBData.php	/^	public function get( $where = NULL\/*, $table=NULL*\/ ){$/;"	f
 get	./includes/interfaces/main.php	/^	function get( $where = NULL, $table=NULL );$/;"	f
@@ -181,13 +230,24 @@ getThemesForPart	./includes/fagent.php	/^    public function getThemesForPart( $
 getTop	./includes/interfaces/main.php	/^\/*	function getTop();$/;"	f
 getTotalPages	./includes/classes/DBData.php	/^    public function getTotalPages(){$/;"	f
 getVars	./includes/template.php	/^	function getVars($name = null) {$/;"	f
+get_my_children	./includes/fagent.php	/^	private	function get_my_children( $id, $level ){$/;"	f
 hadle	./includes/Controllers/Controller.php	/^ *  This _abstract_ class hadle the most basic functions such as $/;"	c
 hashpass	./includes/Controllers/user.php	/^	function hashpass( $plain ){$/;"	f
+hashpass	./includes/classes/Actor.php	/^	function hashpass( $plain ){$/;"	f
+hashpass	./includes/classes/User.php	/^	public $hashpass;$/;"	v
 i	./includes/functions.php	/^    for( $i = 0; $i < $cnt-1; $i++ ) $r .= $pieces[$i].$glue;$/;"	v
+ia	./includes/Controllers/msgview.php	/^		$ia = $user->isAdmin();$/;"	v
+ia	./includes/fagent.php	/^		$ia = $user->isAdmin();$/;"	v
+iadmin	./includes/Controllers/user.php	/^	$iadmin = $this->checkRights() == FULL_ACCESS;$/;"	v
 id	./includes/Controllers/parts.php	/^        $id = ( is_numeric( $this->arguments[0] ) ) ? $this->arguments[0] : 0;$/;"	v
 id	./includes/Controllers/themes.php	/^        $id = ( is_numeric( $this->arguments[0] ) ) ? $this->arguments[0] : 0;$/;"	v
+id	./includes/classes/DBData.php	/^		if( $setid ) $this->id = $id;$/;"	v
 id	./includes/classes/DBData.php	/^		if( is_array( $id ) ) $id = $id[$this->keyfield];$/;"	v
+id	./includes/classes/DBData.php	/^	  $this->id = $id;$/;"	v
+id	./includes/classes/DBData.php	/^	protected $id;$/;"	v
 id	./includes/classes/DBData.php	/^	public function delete( $id = NULL ){$/;"	v
+id	./includes/classes/Item.php	/^		if( $this->id == 0 ) return ERRCODE;$/;"	v
+id	./includes/classes/Item.php	/^	protected $id;$/;"	v
 id	./includes/classes/Item.php	/^	public function edit( $id = NULL ){$/;"	v
 id	./includes/classes/Item.php	/^	public function view( $id = NULL ){$/;"	v
 id	./includes/fagent.php	/^    public function getPost( $id = 1 ){$/;"	v
@@ -202,6 +262,7 @@ info	./includes/Controllers/msgview.php	/^            $info = $this->fagent->get
 init	./includes/template.php	/^	function init($smarty_dir,$template_dir,$compile_dir, $debug = true) {$/;"	f
 insert	./includes/classes/DBData.php	/^	public function insert(){$/;"	f
 insert	./includes/interfaces/main.php	/^	function insert();$/;"	f
+instance	./includes/template.php	/^		static $instance;$/;"	v
 isAdmin	./includes/Controllers/user.php	/^    public function isAdmin(){$/;"	f
 isLoged	./includes/Controllers/msgview.php	/^    private function isLoged(){$/;"	f
 isLoged	./includes/Controllers/user.php	/^    public function isLoged(){$/;"	f
@@ -219,45 +280,69 @@ keywords	./includes/template.php	/^			$keywords = ($mode == "i") ? $keywords.$se
 keywords	./includes/template.php	/^		if (is_array($keywords)) $keywords = implode($separator, $keywords);$/;"	v
 limit	./includes/classes/DBData.php	/^            $limit = " LIMIT ".($this->page -1)*$this->ppp.",{$this->ppp} ";$/;"	v
 list	./includes/Controllers/parts.php	/^        $list = $this->getAll();$/;"	v
+list	./includes/Controllers/themes.php	/^	$list = $fagent->getPartsThemes();$/;"	v
 list	./includes/Controllers/themes.php	/^        $list = $this->getAll();$/;"	v
 ljfields	./includes/classes/DBData.php	/^        $ljfields = array();$/;"	v
 ljfields	./includes/classes/DBData.php	/^        $ljfields = implode( ',', $ljfields );$/;"	v
 ljoin	./includes/classes/DBData.php	/^    protected $ljoin = array(); \/\/Array of left joins. $/;"	v
 logedin	./includes/classes/Pages.php	/^		$logedin = ( isset( $_SESSION[PROJECT]["id"] ) && ( $_SESSION[PROJECT]["id"] > 0 ) ) ? TRUE : FALSE;$/;"	v
 login	./includes/Controllers/user.php	/^    function login(){$/;"	f
+login	./includes/classes/Actor.php	/^	function login( $name, $pass, $plain=TRUE ){$/;"	f
 logout	./includes/Controllers/user.php	/^	function logout(){$/;"	f
+logout	./includes/classes/Actor.php	/^	function logout(){$/;"	f
+lql	./includes/classes/DBData.php	/^        $this->lql = count( $d );$/;"	v
 lql	./includes/classes/DBData.php	/^    private $lql = TRUE;$/;"	v
+m	./ajax.php	/^		$m = $msgview->getOne( $_REQUEST["get_message"] );$/;"	v
 makeTopMenu	./includes/classes/Pages.php	/^	private function makeTopMenu(){$/;"	f
 mb_implode	./includes/functions.php	/^function mb_implode( $glue, $pieces ){$/;"	f
+mi	./includes/Controllers/msgview.php	/^		$mi = $user->getMyID();$/;"	v
+mi	./includes/fagent.php	/^			$mi = $user->getMyID();$/;"	v
 mode	./includes/template.php	/^	function setDescription($description, $mode = "r", $separator = ". ") {$/;"	v
 mode	./includes/template.php	/^	function setKeywords($keywords, $mode = "r", $separator = ",") {$/;"	v
 mode	./includes/template.php	/^	function setTitle($title, $mode = "r", $separator = " - ") {$/;"	v
 mover	./index.php	/^        $mover = explode( '\/', $_REQUEST["url"] );$/;"	v
 msg	./includes/classes/Error.php	/^	private function msg(){$/;"	f
 name	./includes/Controllers/Controller.php	/^ * Eg: it can consit of function name and an argument$/;"	f
+name	./includes/Controllers/user.php	/^            $this->name = $r["name"];$/;"	v
+name	./includes/classes/Actor.php	/^		$this->name = $r["name"];$/;"	v
+name	./includes/classes/Actor.php	/^	public $name;$/;"	v
 num_queries	./includes/mysql.php	/^	var $num_queries = 0;$/;"	v
 old_post	./includes/Controllers/msgview.php	/^            $old_post = $this->fagent->getPost( $this->arguments[0] );$/;"	v
 order	./includes/classes/DBData.php	/^	protected $order = NULL;$/;"	v
 order	./includes/classes/DBData.php	/^        $order = ( is_null( $this->order ) ) ? '': " ORDER BY `".$this->order."` ";$/;"	v
 order	./includes/fagent.php	/^    var $order = "datetime";$/;"	v
+own_data	./includes/fagent.php	/^    private $own_data=NULL;$/;"	v
 p	./includes/Controllers/msgview.php	/^        $p = $this->fagent->getPartsThemes();$/;"	v
 p	./includes/classes/Item.php	/^        $p =  ( is_array( $parent ) ) ? $parent["parent"] : $parent  ;$/;"	v
 p	./includes/classes/Item.php	/^        $p = $C->getData();$/;"	v
 p	./includes/fagent.php	/^        $p = $this->parta->getAll();$/;"	v
 page	./includes/Controllers/msgview.php	/^                $page = $this->arguments[1];$/;"	v
 page	./includes/Controllers/msgview.php	/^            else $page = 1;$/;"	v
+page	./includes/classes/DBData.php	/^        $this->page = $page;$/;"	v
 page	./includes/classes/DBData.php	/^    private $page = 0;$/;"	v
+page	./includes/classes/Pages.php	/^				$this->page = '';$/;"	v
+page	./includes/classes/Pages.php	/^		$this->page = strtolower($this->url[0]);$/;"	v
+page	./includes/classes/Pages.php	/^		if ( empty( $this->page ) ) $this->page="index";$/;"	v
+page	./includes/classes/Pages.php	/^	private $page;$/;"	v
 pages	./includes/Controllers/msgview.php	/^            $pages = $this->fagent->getTotalPages();$/;"	v
 pages	./includes/fagent.php	/^    public function buildPager( $theme, $page, $pages=NULL ){$/;"	v
 pages_total	./includes/classes/DBData.php	/^    private $pages_total = 0; $/;"	v
 partAgent	./includes/fagent.php	/^class partAgent extends DBData{$/;"	c
 part_id	./includes/Controllers/themes.php	/^        $part_id = ( is_numeric( $this->arguments[0] ) ) ? $this->arguments[0] : 1;$/;"	v
+parta	./includes/fagent.php	/^        $this->parta = new partAgent();$/;"	v
+parta	./includes/fagent.php	/^    var $parta;$/;"	v
 pass	./includes/Controllers/user.php	/^		$pass = ( $plain ) ? $this->hashpass( $pass ) : $pass;$/;"	v
+pass	./includes/classes/Actor.php	/^		$pass = ( $plain ) ? $this->hashpass( $pass ) : $pass;$/;"	v
 persistency	./includes/mysql.php	/^	function sql_db( $sqlserver, $sqluser, $sqlpassword, $database, $persistency = true ) {$/;"	v
 plain	./includes/Controllers/user.php	/^	function checkLogin( $name, $pass, $plain=TRUE ){$/;"	v
+plain	./includes/classes/Actor.php	/^	function login( $name, $pass, $plain=TRUE ){$/;"	v
+plainpass	./includes/classes/User.php	/^	private $plainpass;$/;"	v
+post	./includes/Controllers/msgview.php	/^			$post = $this->getOne( $this->arguments[0] );$/;"	v
+post	./includes/fagent.php	/^			$post = $this->getOne( $id );$/;"	v
 posts	./includes/Controllers/msgview.php	/^            $posts = $this->fagent->getMessagesByTheme( $this->arguments[0], $page );$/;"	v
+ppp	./includes/classes/DBData.php	/^        $this->ppp = $ppp;$/;"	v
 ppp	./includes/classes/DBData.php	/^    private $ppp = 10;  \/\/ Posts per Page;$/;"	v
-ppp	./includes/fagent.php	/^        $ppp = ( isset( $_SESSION["user_conf"]["ppp"] )  ) ? $_SESSION["user_conf"]["ppp"]: 10;$/;"	v
+ppp	./includes/fagent.php	/^        $ppp = ( isset( $_SESSION[PROJECT]["user_conf"]["ppp"] )  ) ? $_SESSION[PROJECT]["user_conf"]["ppp"]: 10;$/;"	v
 prepareMyData	./includes/classes/Item.php	/^	protected function prepareMyData(){$/;"	f
 process	./includes/Controllers/Controller.php	/^    function process( $ar =NULL ){$/;"	f
 process	./includes/classes/Pages.php	/^	public function process( $url ){$/;"	f
@@ -265,10 +350,17 @@ query_id	./includes/mysql.php	/^		if ( !$query_id ) $query_id = $this->query_res
 query_id	./includes/mysql.php	/^	function sql_error( $query_id = 0 ) {$/;"	v
 query_id	./includes/mysql.php	/^	function sql_fetchrow( $query_id = 0 ) {$/;"	v
 query_id	./includes/mysql.php	/^	function sql_numrows( $query_id = 0 ) {$/;"	v
+query_result	./includes/mysql.php	/^			$this->query_result = mysql_query( $query, $this->db_connect_id );$/;"	v
+query_result	./includes/mysql.php	/^	var $query_result;$/;"	v
+r	./includes/Controllers/msgview.php	/^			$r = $this->fagent->delete( $this->arguments[0] );$/;"	v
+r	./includes/Controllers/msgview.php	/^			if( $r=="NOTALLOWED" ){}			$/;"	v
 r	./includes/Controllers/user.php	/^		$r = $r;$/;"	v
 r	./includes/Controllers/user.php	/^		$r = $this->getOne( "`id`={$_SESSION[PROJECT]["id"]}" );$/;"	v
 r	./includes/Controllers/user.php	/^		$r = $this->getOne( "`login`='{$name}' AND `pass`='{$pass}'" );$/;"	v
 r	./includes/Controllers/user.php	/^        $r = $this->getOne( $this->getMyID() );$/;"	v
+r	./includes/classes/Actor.php	/^		$r = $r;$/;"	v
+r	./includes/classes/Actor.php	/^		$r = $this->get( "`id`={$_SESSION[PROJECT]["id"]}" );$/;"	v
+r	./includes/classes/Actor.php	/^		$r = $this->get( "`login`='{$name}' AND `pass`='{$pass}'" );$/;"	v
 r	./includes/fagent.php	/^        $r =  $this->getAll( "`theme_id`=".$theme_id );$/;"	v
 r	./includes/functions.php	/^    $r = '';$/;"	v
 redirect	./includes/Controllers/Controller.php	/^    protected function redirect( $page ){$/;"	f
@@ -281,13 +373,18 @@ reply	./includes/Controllers/msgview.php	/^    function reply(){$/;"	f
 res	./includes/classes/DBData.php	/^        $res = $this->get( $where, $table );$/;"	v
 result	./includes/mysql.php	/^			$result = mysql_close($this->db_connect_id);$/;"	v
 result	./includes/mysql.php	/^			$result = mysql_num_rows( $query_id );$/;"	v
+returnOne	./includes/classes/DBData.php	/^        $this->returnOne = FALSE;$/;"	v
+returnOne	./includes/classes/DBData.php	/^        $this->returnOne = TRUE;$/;"	v
 returnOne	./includes/classes/DBData.php	/^    private $returnOne = 0; \/\/Last Query Length$/;"	v
+rights	./includes/classes/Actor.php	/^	public $rights;$/;"	v
 row	./includes/mysql.php	/^	var $row = array();$/;"	v
 rows	./includes/mysql.php	/^			$rows = array();$/;"	v
 rowset	./includes/mysql.php	/^	var $rowset = array();$/;"	v
 run	./includes/Controllers/Controller.php	/^    public function run( $args, $admin=false ){$/;"	f
+save	./includes/classes/Actor.php	/^\/*	function save( $d = null){$/;"	f
 save	./includes/classes/DBData.php	/^	public function save( $d = null ){$/;"	f
 save	./includes/classes/Item.php	/^	public function save( $d = null ){$/;"	f
+save	./includes/classes/User.php	/^	public function save( $d = null ){$/;"	f
 savePost	./includes/Controllers/msgview.php	/^    public function savePost(){$/;"	f
 serialFieldDB	./includes/interfaces/main.php	/^interface serialFieldDB extends DBObject{$/;"	i
 setData	./includes/classes/DBData.php	/^	public function setData( $data ){$/;"	f
@@ -303,10 +400,19 @@ setTable	./includes/classes/DBData.php	/^	public function setTable( $table ){$/;
 setTitle	./includes/template.php	/^	function setTitle($title, $mode = "r", $separator = " - ") {$/;"	f
 setid	./includes/classes/DBData.php	/^	protected function ar2id( $id, $setid = true ){$/;"	v
 sfield	./includes/classes/Item.php	/^	protected $sfield = "fields";					$/;"	v
+showAdmin	./includes/Controllers/Controller.php	/^        $this->showAdmin = $admin;$/;"	v
 showAdmin	./includes/Controllers/Controller.php	/^    protected $showAdmin=false;$/;"	v
 showPage	./includes/classes/Pages.php	/^	private function showPage( ){$/;"	f
+showTemplate	./includes/Controllers/Controller.php	/^        $this->showTemplate = true;$/;"	v
 showTemplate	./includes/Controllers/Controller.php	/^    protected $showTemplate=true;$/;"	v
+showTemplate	./includes/Controllers/msgview.php	/^            $this->showTemplate = false;$/;"	v
+showTemplate	./includes/Controllers/msgview.php	/^        $this->showTemplate = false;$/;"	v
+showTemplate	./includes/Controllers/parts.php	/^\/\/        $this->showTemplate=false;$/;"	v
+showTemplate	./includes/Controllers/themes.php	/^\/\/        $this->showTemplate=false;$/;"	v
+showTemplate	./includes/Controllers/user.php	/^			$this->showTemplate = false;$/;"	v
+showTemplate	./includes/Controllers/user.php	/^            $this->showTemplate = false;$/;"	v
 slist	./includes/classes/DBData.php	/^	protected $slist = "_list";$/;"	v
+smarty	./includes/template.php	/^	var $smarty;$/;"	v
 sql	./includes/classes/DBData.php	/^			$sql = "INSERT INTO `{$this->table}` (".$flds.") VALUES ( ".$vals." )";$/;"	v
 sql	./includes/classes/DBData.php	/^			$sql = "UPDATE ".$this->table." SET ".$fldlist." WHERE {$this->keyfield}=".$this->data[$this->keyfield];$/;"	v
 sql	./includes/classes/DBData.php	/^		$sql = "DELETE FROM `{$this->table}` WHERE `{$this->keyfield}`={$this->id}";$/;"	v
@@ -328,6 +434,8 @@ table	./includes/Controllers/parts.php	/^    var $table = "parts";$/;"	v
 table	./includes/Controllers/themes.php	/^    var $table = "themes";$/;"	v
 table	./includes/Controllers/user.php	/^    var $table="users";$/;"	v
 table	./includes/classes/DBData.php	/^		$table = $this->table;$/;"	v
+table	./includes/classes/DBData.php	/^		$this->table = $table;		$/;"	v
+table	./includes/classes/DBData.php	/^	protected $table;$/;"	v
 table	./includes/classes/Item.php	/^	protected $table = "Items";$/;"	v
 table	./includes/fagent.php	/^    var $table = "parts";$/;"	v
 table	./includes/fagent.php	/^    var $table = "posts";$/;"	v
@@ -348,20 +456,30 @@ theme	./includes/Controllers/msgview.php	/^    public function theme(){$/;"	f
 themeAgent	./includes/fagent.php	/^class themeAgent extends DBData{$/;"	c
 theme_id	./includes/fagent.php	/^    public function getMessagesByTheme( $theme_id = 1, $page = 1 ){$/;"	v
 theme_id	./includes/fagent.php	/^    public function getThemeInfo( $theme_id = 1 ){$/;"	v
+themea	./includes/fagent.php	/^        $this->themea = new themeAgent();$/;"	v
+themea	./includes/fagent.php	/^    var $themea;$/;"	v
 time_query	./includes/mysql.php	/^	var $time_query = "";$/;"	v
 title	./includes/template.php	/^			$title = ($mode == "i") ? $title.$separator.$current_content : $current_title.$separator.$title;$/;"	v
 to	./includes/classes/DBData.php	/^ Main class to control tables in DB.$/;"	c
+to	./includes/classes/User.php	/^\/\/!    Use this function to save user data just encrypting password$/;"	f
 to	./includes/fagent.php	/^\/*! Helper class to control parts *\/$/;"	c
 to	./includes/fagent.php	/^\/*! Helper class to control themes *\/$/;"	c
+totalPages	./includes/classes/DBData.php	/^            $this->totalPages = (int)ceil( $this->lql \/ $this->ppp );$/;"	v
 total_tdb	./includes/mysql.php	/^			$total_tdb = ($tdbe - $tdba);$/;"	v
 total_time_db	./includes/mysql.php	/^	var $total_time_db = 0;$/;"	v
 transaction	./includes/mysql.php	/^			return ( $transaction == END_TRANSACTION ) ? true : false;$/;"	v
 transaction	./includes/mysql.php	/^	function sql_query($query = "", $transaction = false) {$/;"	v
+tree	./includes/Controllers/msgview.php	/^    public function tree(){$/;"	f
+tree	./includes/fagent.php	/^		$tree = array();$/;"	v
 type	./includes/functions.php	/^			$type = "header";$/;"	v
 type	./includes/functions.php	/^		$type = $status;$/;"	v
 unstoreSfield	./includes/classes/DBData.php	/^	protected function unstoreSfield( $delimeter = ';' ){$/;"	f
 update	./includes/classes/DBData.php	/^	public function update(){$/;"	f
 update	./includes/interfaces/main.php	/^	function update();$/;"	f
+url	./includes/classes/Pages.php	/^		$this->url = explode( '?', $url, 2 );$/;"	v
+url	./includes/classes/Pages.php	/^		$this->url = explode( '\/', $this->url[0] );$/;"	v
+url	./includes/classes/Pages.php	/^	private $url;$/;"	v
+usePager	./includes/classes/DBData.php	/^        $this->usePager = $yes;$/;"	v
 usePager	./includes/classes/DBData.php	/^    private $usePager = false;$/;"	v
 user_id	./includes/fagent.php	/^    public function getMessagesByUser( $user_id = 1 ){$/;"	v
 vals	./includes/classes/DBData.php	/^			$vals = implode( ',', $vals ); $/;"	v

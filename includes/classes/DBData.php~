@@ -166,7 +166,7 @@ class DBData implements DBObject{
 		if( count( $flds ) > 0){
 			$flds = implode( ',', $flds );
 			$vals = implode( ',', $vals ); 
-//            var_dump( $vals );
+            var_dump( $vals );
 			$sql = "INSERT INTO `{$this->table}` (".$flds.") VALUES ( ".$vals." )";
 			return $this->db->sql_query( $sql );
 		} else {
@@ -190,7 +190,7 @@ class DBData implements DBObject{
 		if( count( $flds ) > 0){
 			$fldlist = mb_implode( ',', $flds );
 			$sql = "UPDATE ".$this->table." SET ".$fldlist." WHERE {$this->keyfield}=".$this->data[$this->keyfield];
-//var_dump( $sql ); die;
+var_dump( $sql ); die;
 			return $db->sql_query( $sql );
 		} else{
 			$E->setError( CANTSAVE." for update");
